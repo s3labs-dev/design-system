@@ -1,0 +1,153 @@
+---
+title: Download Assets
+description: Logo files, fonts, and design resources
+---
+
+Download the s3 labs brand assets for use in your projects.
+
+## Logo Files
+
+### SVG (Recommended)
+
+SVG files are recommended for web and digital use. They scale perfectly at any size.
+
+#### Primary Mark (Tri-color)
+
+```svg
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="s3-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s3-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s3-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <path d="M 12 16 Q 14 13, 20 14 Q 40 12, 70 13 Q 90 12, 100 16 Q 108 19, 108 24 Q 108 29, 100 32 Q 90 35, 70 34 Q 40 36, 20 34 Q 14 33, 12 29 Q 10 26, 10 23 Q 10 19, 12 16 Z" fill="url(#s3-green)"/>
+  <path d="M 28 34 Q 32 31, 40 32 Q 60 30, 80 31 Q 95 30, 102 34 Q 108 37, 108 42 Q 108 47, 102 50 Q 95 53, 80 52 Q 60 54, 40 52 Q 32 53, 28 49 Q 24 46, 24 42 Q 24 38, 28 34 Z" fill="url(#s3-cyan)"/>
+  <path d="M 12 52 Q 14 49, 20 50 Q 40 48, 70 49 Q 90 48, 100 52 Q 108 55, 108 60 Q 108 65, 100 68 Q 90 71, 70 70 Q 40 72, 20 70 Q 14 69, 12 65 Q 10 62, 10 59 Q 10 55, 12 52 Z" fill="url(#s3-gold)"/>
+</svg>
+```
+
+#### Compact Mark (Favicon)
+
+```svg
+<svg viewBox="0 0 36 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fav-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fav-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="fav-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <path d="M 3 4 Q 4 3, 6 3.5 Q 12 3, 22 3.2 Q 28 3, 31 4 Q 33 4.8, 33 6 Q 33 7.2, 31 8 Q 28 8.8, 22 8.5 Q 12 9, 6 8.5 Q 4 8.2, 3 7.2 Q 2 6.5, 2 5.8 Q 2 4.8, 3 4 Z" fill="url(#fav-green)"/>
+  <path d="M 8 8.5 Q 10 7.8, 12 8 Q 18 7.5, 24 7.8 Q 29 7.5, 31 8.5 Q 33 9.3, 33 10.5 Q 33 11.7, 31 12.5 Q 29 13.3, 24 13 Q 18 13.5, 12 13 Q 10 13.2, 8 12.3 Q 6 11.5, 6 10.5 Q 6 9.5, 8 8.5 Z" fill="url(#fav-cyan)"/>
+  <path d="M 3 13 Q 4 12, 6 12.5 Q 12 12, 22 12.2 Q 28 12, 31 13 Q 33 13.8, 33 15 Q 33 16.2, 31 17 Q 28 17.8, 22 17.5 Q 12 18, 6 17.5 Q 4 17.2, 3 16.2 Q 2 15.5, 2 14.8 Q 2 13.8, 3 13 Z" fill="url(#fav-gold)"/>
+</svg>
+```
+
+## Fonts
+
+The s3 labs design system uses three font families, all available from Google Fonts.
+
+### Google Fonts Import
+
+Add this to your CSS:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap');
+```
+
+### HTML Link
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+```
+
+### Font Downloads
+
+For self-hosting, download fonts directly:
+
+- [Outfit on Google Fonts](https://fonts.google.com/specimen/Outfit)
+- [JetBrains Mono on Google Fonts](https://fonts.google.com/specimen/JetBrains+Mono)
+- [Fraunces on Google Fonts](https://fonts.google.com/specimen/Fraunces)
+
+## Color Swatches
+
+### Hex Values
+
+| Color | Hex |
+|-------|-----|
+| Void | `#0d100b` |
+| Forest Base | `#242b1f` |
+| Moss Dark | `#3d4a35` |
+| Bio-Green | `#7ed957` |
+| Glow Cyan | `#5ffbf1` |
+| Bio-Gold | `#d4a574` |
+| Cream | `#f5f1e8` |
+
+### RGB Values
+
+| Color | RGB |
+|-------|-----|
+| Void | `rgb(13, 16, 11)` |
+| Forest Base | `rgb(36, 43, 31)` |
+| Bio-Green | `rgb(126, 217, 87)` |
+| Glow Cyan | `rgb(95, 251, 241)` |
+| Bio-Gold | `rgb(212, 165, 116)` |
+| Cream | `rgb(245, 241, 232)` |
+
+### HSL Values
+
+| Color | HSL |
+|-------|-----|
+| Void | `hsl(96, 19%, 5%)` |
+| Bio-Green | `hsl(102, 65%, 60%)` |
+| Glow Cyan | `hsl(176, 95%, 68%)` |
+| Bio-Gold | `hsl(31, 52%, 64%)` |
+| Cream | `hsl(42, 45%, 94%)` |
+
+## Brand Guidelines
+
+### Logo Clear Space
+
+Maintain clear space around the logo equal to the height of one bar (~25% of total height).
+
+### Minimum Sizes
+
+- **Digital**: 32px height minimum
+- **Print**: 12mm height minimum
+
+### Approved Backgrounds
+
+- Void (#0d100b)
+- Cream (#f5f1e8)
+- Forest gradients
+- Any solid dark color with sufficient contrast
+
+### Prohibited Uses
+
+- Don't rotate or skew the logo
+- Don't change gradient colors
+- Don't add effects (shadows, glows, outlines)
+- Don't place on busy backgrounds
+- Don't stretch or compress
+
+## License
+
+The s3 labs design system assets are provided for use in s3 labs projects and approved partner implementations. Contact brand@s3labs.co for licensing inquiries.

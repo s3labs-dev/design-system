@@ -1,0 +1,250 @@
+---
+title: Design Tokens
+description: Complete CSS custom properties reference for the s3 labs design system
+---
+
+Design tokens are the foundational values that define the visual design of the s3 labs system. Copy and paste these CSS custom properties into your project.
+
+## Complete Token Set
+
+```css
+:root {
+  /* ========================================
+     s3 labs Design System - Design Tokens
+     ======================================== */
+
+  /* === Foundation Colors === */
+  --s3-void: #0d100b;
+  --s3-void-elevated: #141912;
+  --s3-void-surface: #1a201a;
+
+  --s3-forest-deep: #1a1f16;
+  --s3-forest-base: #242b1f;
+  --s3-forest-mid: #2d3628;
+  --s3-forest-light: #3a4532;
+
+  --s3-moss-dark: #3d4a35;
+  --s3-moss: #4a5942;
+  --s3-moss-light: #5a6848;
+  --s3-moss-bright: #6a7858;
+
+  /* === Bio-Luminescent Accents === */
+  --s3-bio-green: #7ed957;
+  --s3-bio-green-dim: #5cb842;
+  --s3-bio-green-bright: #8fe668;
+
+  --s3-glow-cyan: #5ffbf1;
+  --s3-glow-cyan-dim: #4ad9d0;
+  --s3-glow-cyan-bright: #7ffff8;
+
+  --s3-bio-gold: #d4a574;
+  --s3-bio-gold-dim: #b8895c;
+  --s3-bio-gold-bright: #e6bc8e;
+
+  /* === Text Colors === */
+  --s3-cream: #f5f1e8;
+  --s3-cream-dim: #e8e4db;
+  --s3-cream-bright: #fdfbf7;
+
+  --s3-stone: #71717a;
+  --s3-stone-dim: #52525b;
+  --s3-stone-bright: #a1a1aa;
+
+  /* === Semantic Colors === */
+  --s3-success: var(--s3-bio-green);
+  --s3-warning: var(--s3-bio-gold);
+  --s3-info: var(--s3-glow-cyan);
+  --s3-error: #ef6b6b;
+
+  /* === Typography === */
+  --s3-font-display: 'Outfit', sans-serif;
+  --s3-font-body: 'Outfit', sans-serif;
+  --s3-font-mono: 'JetBrains Mono', monospace;
+  --s3-font-accent: 'Fraunces', serif;
+
+  /* === Spacing Scale (4px base) === */
+  --s3-space-1: 4px;
+  --s3-space-2: 8px;
+  --s3-space-3: 12px;
+  --s3-space-4: 16px;
+  --s3-space-5: 24px;
+  --s3-space-6: 32px;
+  --s3-space-7: 48px;
+  --s3-space-8: 64px;
+  --s3-space-9: 96px;
+  --s3-space-10: 128px;
+
+  /* === Border Radius === */
+  --s3-radius-sm: 6px;
+  --s3-radius-md: 12px;
+  --s3-radius-lg: 20px;
+  --s3-radius-xl: 28px;
+  --s3-radius-2xl: 40px;
+  --s3-radius-full: 9999px;
+
+  /* === Shadows === */
+  --s3-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --s3-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --s3-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+
+  /* === Glow Effects === */
+  --s3-glow-green: 0 0 40px rgba(126, 217, 87, 0.15);
+  --s3-glow-cyan: 0 0 40px rgba(95, 251, 241, 0.15);
+  --s3-glow-gold: 0 0 40px rgba(212, 165, 116, 0.15);
+
+  /* === Transitions === */
+  --s3-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --s3-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --s3-duration-fast: 150ms;
+  --s3-duration-normal: 300ms;
+  --s3-duration-slow: 500ms;
+}
+```
+
+## Token Categories
+
+### Colors by Category
+
+#### Foundation (Backgrounds & Surfaces)
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--s3-void` | #0d100b | Primary background |
+| `--s3-void-elevated` | #141912 | Sidebar, nav |
+| `--s3-forest-base` | #242b1f | Cards, panels |
+| `--s3-forest-mid` | #2d3628 | Hover states |
+| `--s3-moss-dark` | #3d4a35 | Borders |
+
+#### Accents (Interactive & Emphasis)
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--s3-bio-green` | #7ed957 | Primary CTA |
+| `--s3-glow-cyan` | #5ffbf1 | Links, info |
+| `--s3-bio-gold` | #d4a574 | Warnings |
+
+#### Text
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--s3-cream` | #f5f1e8 | Primary text |
+| `--s3-cream-dim` | #e8e4db | Body text |
+| `--s3-moss-bright` | #6a7858 | Secondary text |
+| `--s3-moss` | #4a5942 | Muted text |
+
+### Spacing
+
+| Token | Value |
+|-------|-------|
+| `--s3-space-1` | 4px |
+| `--s3-space-2` | 8px |
+| `--s3-space-3` | 12px |
+| `--s3-space-4` | 16px |
+| `--s3-space-5` | 24px |
+| `--s3-space-6` | 32px |
+| `--s3-space-7` | 48px |
+| `--s3-space-8` | 64px |
+
+### Border Radius
+
+| Token | Value |
+|-------|-------|
+| `--s3-radius-sm` | 6px |
+| `--s3-radius-md` | 12px |
+| `--s3-radius-lg` | 20px |
+| `--s3-radius-xl` | 28px |
+| `--s3-radius-full` | 9999px |
+
+## SCSS Variables
+
+For Sass/SCSS projects:
+
+```scss
+// Colors
+$s3-void: #0d100b;
+$s3-forest-base: #242b1f;
+$s3-bio-green: #7ed957;
+$s3-glow-cyan: #5ffbf1;
+$s3-bio-gold: #d4a574;
+$s3-cream: #f5f1e8;
+
+// Spacing
+$s3-space: (
+  1: 4px,
+  2: 8px,
+  3: 12px,
+  4: 16px,
+  5: 24px,
+  6: 32px,
+  7: 48px,
+  8: 64px
+);
+
+// Function to get spacing
+@function space($key) {
+  @return map-get($s3-space, $key);
+}
+```
+
+## JavaScript/TypeScript
+
+For JS-based styling (CSS-in-JS, Tailwind config):
+
+```typescript
+export const s3Tokens = {
+  colors: {
+    void: '#0d100b',
+    forestBase: '#242b1f',
+    bioGreen: '#7ed957',
+    glowCyan: '#5ffbf1',
+    bioGold: '#d4a574',
+    cream: '#f5f1e8',
+  },
+  spacing: {
+    1: '4px',
+    2: '8px',
+    3: '12px',
+    4: '16px',
+    5: '24px',
+    6: '32px',
+    7: '48px',
+    8: '64px',
+  },
+  radius: {
+    sm: '6px',
+    md: '12px',
+    lg: '20px',
+    xl: '28px',
+    full: '9999px',
+  },
+} as const;
+```
+
+## Tailwind Configuration
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        's3-void': '#0d100b',
+        's3-forest': {
+          base: '#242b1f',
+          mid: '#2d3628',
+        },
+        's3-bio-green': '#7ed957',
+        's3-glow-cyan': '#5ffbf1',
+        's3-bio-gold': '#d4a574',
+        's3-cream': '#f5f1e8',
+      },
+      borderRadius: {
+        's3-sm': '6px',
+        's3-md': '12px',
+        's3-lg': '20px',
+        's3-xl': '28px',
+      },
+    },
+  },
+};
+```

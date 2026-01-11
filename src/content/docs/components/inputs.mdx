@@ -1,0 +1,163 @@
+---
+title: Inputs
+description: Form input components with focus glow effects
+---
+
+import ComponentDemo from '../../../components/ComponentDemo.astro';
+
+Input fields in the s3 labs design system feature clean borders with bio-luminescent focus states.
+
+## Text Input
+
+<ComponentDemo title="Input States">
+  <div style="display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 320px;">
+    <div class="input-wrapper">
+      <label class="input-label">Default</label>
+      <input type="text" class="s3-input" placeholder="Enter text..." />
+    </div>
+    <div class="input-wrapper">
+      <label class="input-label">With Value</label>
+      <input type="email" class="s3-input" value="name@s3labs.co" />
+    </div>
+  </div>
+</ComponentDemo>
+
+<style>{`
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--s3-cream-dim, #e8e4db);
+  }
+  .s3-input {
+    padding: 12px 16px;
+    font-family: var(--s3-font-body, 'Outfit', sans-serif);
+    font-size: 14px;
+    background: var(--s3-void, #0d100b);
+    border: 1px solid var(--s3-moss-dark, #3d4a35);
+    border-radius: 12px;
+    color: var(--s3-cream, #f5f1e8);
+    transition: all 150ms ease-out;
+    width: 100%;
+  }
+  .s3-input:focus {
+    outline: none;
+    border-color: var(--s3-bio-green, #7ed957);
+    box-shadow: 0 0 0 3px rgba(126, 217, 87, 0.15);
+  }
+  .s3-input::placeholder {
+    color: var(--s3-moss, #4a5942);
+  }
+`}</style>
+
+## Input Anatomy
+
+| Element | Style |
+|---------|-------|
+| Background | `--s3-void` |
+| Border | 1px `--s3-moss-dark` |
+| Border Radius | 12px |
+| Text Color | `--s3-cream` |
+| Placeholder | `--s3-moss` |
+| Focus Border | `--s3-bio-green` |
+| Focus Glow | 3px rgba(126, 217, 87, 0.15) |
+
+## CSS Implementation
+
+```css
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3-space-2);
+}
+
+.input-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--s3-cream-dim);
+}
+
+.input {
+  padding: var(--s3-space-3) var(--s3-space-4);
+  font-family: var(--s3-font-body);
+  font-size: 14px;
+  background: var(--s3-void);
+  border: 1px solid var(--s3-moss-dark);
+  border-radius: var(--s3-radius-md);
+  color: var(--s3-cream);
+  transition: all var(--s3-duration-fast) var(--s3-ease-out);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--s3-bio-green);
+  box-shadow: 0 0 0 3px rgba(126, 217, 87, 0.15);
+}
+
+.input::placeholder {
+  color: var(--s3-moss);
+}
+
+/* Disabled */
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error */
+.input-error {
+  border-color: var(--s3-error);
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 107, 107, 0.15);
+}
+```
+
+## Input Sizes
+
+```css
+/* Small */
+.input-sm {
+  padding: var(--s3-space-2) var(--s3-space-3);
+  font-size: 12px;
+}
+
+/* Large */
+.input-lg {
+  padding: var(--s3-space-4) var(--s3-space-5);
+  font-size: 16px;
+}
+```
+
+## Textarea
+
+```css
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+```
+
+## Select
+
+```css
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a5942' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+```
+
+## Accessibility
+
+- Labels are associated with inputs via `for`/`id` attributes
+- Focus states are clearly visible with the Bio-Green glow
+- Error states use both color and text to indicate issues
+- Disabled inputs maintain semantic meaning while appearing inactive

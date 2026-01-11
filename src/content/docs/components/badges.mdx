@@ -1,0 +1,118 @@
+---
+title: Badges
+description: Status indicators and labels with accent color variants
+---
+
+import BadgePreview from '../../../components/BadgePreview.astro';
+import ComponentDemo from '../../../components/ComponentDemo.astro';
+
+Badges are used to highlight status, categories, or metadata. They use the monospace font for a technical aesthetic.
+
+## Badge Variants
+
+<ComponentDemo title="Color Variants">
+  <BadgePreview variant="green">ACTIVE</BadgePreview>
+  <BadgePreview variant="cyan">INFO</BadgePreview>
+  <BadgePreview variant="gold">WARNING</BadgePreview>
+  <BadgePreview variant="neutral">NEUTRAL</BadgePreview>
+</ComponentDemo>
+
+### Green Badge
+
+Use for success states, active status, or primary categorization.
+
+### Cyan Badge
+
+Use for informational content, links, or secondary emphasis.
+
+### Gold Badge
+
+Use for warnings, pending states, or items requiring attention.
+
+### Neutral Badge
+
+Use for disabled states, archived items, or low-emphasis labels.
+
+## With Status Dot
+
+<ComponentDemo title="Status Indicators">
+  <BadgePreview variant="green" dot>Online</BadgePreview>
+  <BadgePreview variant="cyan" dot>Processing</BadgePreview>
+  <BadgePreview variant="gold" dot>Pending</BadgePreview>
+  <BadgePreview variant="neutral" dot>Offline</BadgePreview>
+</ComponentDemo>
+
+Add a status dot for real-time status indicators.
+
+## CSS Implementation
+
+```css
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s3-space-2);
+  padding: var(--s3-space-1) var(--s3-space-3);
+  font-family: var(--s3-font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: var(--s3-radius-full);
+  text-transform: uppercase;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+/* Green */
+.badge-green {
+  background: rgba(126, 217, 87, 0.15);
+  color: var(--s3-bio-green);
+  border: 1px solid rgba(126, 217, 87, 0.3);
+}
+
+/* Cyan */
+.badge-cyan {
+  background: rgba(95, 251, 241, 0.15);
+  color: var(--s3-glow-cyan);
+  border: 1px solid rgba(95, 251, 241, 0.3);
+}
+
+/* Gold */
+.badge-gold {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--s3-bio-gold);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+/* Neutral */
+.badge-neutral {
+  background: var(--s3-forest-mid);
+  color: var(--s3-moss-bright);
+  border: 1px solid var(--s3-moss-dark);
+}
+```
+
+## Usage Guidelines
+
+| Context | Recommended Variant |
+|---------|---------------------|
+| Success/Active | Green |
+| Information/Links | Cyan |
+| Warning/Pending | Gold |
+| Disabled/Archived | Neutral |
+| Errors | Red (use `--s3-error`) |
+
+## Sizing
+
+Badges have a single size by default. For larger badges, increase padding:
+
+```css
+.badge-lg {
+  padding: var(--s3-space-2) var(--s3-space-4);
+  font-size: 12px;
+}
+```

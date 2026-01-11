@@ -1,0 +1,101 @@
+---
+title: Color Palette
+description: A tri-chromatic system rooted in deep forest foundations with bio-luminescent accents
+---
+
+import ColorSwatch from '../../../components/ColorSwatch.astro';
+
+The s3 labs color system is built on a foundation of deep forest tones with bio-luminescent accents that glow with purpose.
+
+## Foundation Colors
+
+These form the base layer of the interface — backgrounds, surfaces, and structural elements.
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Void" hex="#0d100b" variable="--s3-void" usage="Primary background" />
+  <ColorSwatch name="Void Elevated" hex="#141912" variable="--s3-void-elevated" usage="Sidebar, elevated surfaces" />
+  <ColorSwatch name="Void Surface" hex="#1a201a" variable="--s3-void-surface" usage="Modal backgrounds" />
+</div>
+
+### Forest Scale
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Forest Deep" hex="#1a1f16" variable="--s3-forest-deep" usage="Deep backgrounds" />
+  <ColorSwatch name="Forest Base" hex="#242b1f" variable="--s3-forest-base" usage="Cards, panels" />
+  <ColorSwatch name="Forest Mid" hex="#2d3628" variable="--s3-forest-mid" usage="Hover states" />
+  <ColorSwatch name="Forest Light" hex="#3a4532" variable="--s3-forest-light" usage="Active states" />
+</div>
+
+### Moss Scale
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Moss Dark" hex="#3d4a35" variable="--s3-moss-dark" usage="Borders, dividers" />
+  <ColorSwatch name="Moss" hex="#4a5942" variable="--s3-moss" usage="Secondary text, muted" />
+  <ColorSwatch name="Moss Light" hex="#5a6848" variable="--s3-moss-light" usage="Disabled states" />
+  <ColorSwatch name="Moss Bright" hex="#6a7858" variable="--s3-moss-bright" usage="Tertiary text" />
+</div>
+
+## Bio-Luminescent Accents
+
+The accent colors provide life and energy to the interface. Each has dim, base, and bright variants.
+
+### Bio-Green — Primary Accent
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Bio-Green Dim" hex="#5cb842" variable="--s3-bio-green-dim" usage="Pressed states" />
+  <ColorSwatch name="Bio-Green" hex="#7ed957" variable="--s3-bio-green" usage="Primary CTAs, success" glow={true} />
+  <ColorSwatch name="Bio-Green Bright" hex="#8fe668" variable="--s3-bio-green-bright" usage="Hover states" glow={true} />
+</div>
+
+### Glow Cyan — Secondary Accent
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Glow Cyan Dim" hex="#4ad9d0" variable="--s3-glow-cyan-dim" usage="Pressed states" />
+  <ColorSwatch name="Glow Cyan" hex="#5ffbf1" variable="--s3-glow-cyan" usage="Info, links, active" glow={true} />
+  <ColorSwatch name="Glow Cyan Bright" hex="#7ffff8" variable="--s3-glow-cyan-bright" usage="Hover states" glow={true} />
+</div>
+
+### Bio-Gold — Tertiary Accent
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Bio-Gold Dim" hex="#b8895c" variable="--s3-bio-gold-dim" usage="Pressed states" />
+  <ColorSwatch name="Bio-Gold" hex="#d4a574" variable="--s3-bio-gold" usage="Warnings, highlights" glow={true} />
+  <ColorSwatch name="Bio-Gold Bright" hex="#e6bc8e" variable="--s3-bio-gold-bright" usage="Hover states" glow={true} />
+</div>
+
+## Text Colors
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 24px 0;">
+  <ColorSwatch name="Cream" hex="#f5f1e8" variable="--s3-cream" usage="Primary text" />
+  <ColorSwatch name="Cream Dim" hex="#e8e4db" variable="--s3-cream-dim" usage="Body text" />
+  <ColorSwatch name="Cream Bright" hex="#fdfbf7" variable="--s3-cream-bright" usage="High emphasis text" />
+</div>
+
+## Semantic Colors
+
+| Purpose | Variable | Value |
+|---------|----------|-------|
+| Success | `--s3-success` | `var(--s3-bio-green)` |
+| Warning | `--s3-warning` | `var(--s3-bio-gold)` |
+| Info | `--s3-info` | `var(--s3-glow-cyan)` |
+| Error | `--s3-error` | `#ef6b6b` |
+
+## Glow Effects
+
+Each accent color has a corresponding glow shadow for hover states:
+
+```css
+--s3-glow-green: 0 0 40px rgba(126, 217, 87, 0.15);
+--s3-glow-cyan: 0 0 40px rgba(95, 251, 241, 0.15);
+--s3-glow-gold: 0 0 40px rgba(212, 165, 116, 0.15);
+```
+
+## Light Mode Adaptations
+
+In light mode, the accent colors are darkened for contrast on cream backgrounds:
+
+| Dark Mode | Light Mode |
+|-----------|------------|
+| `#7ed957` | `#4a6830` |
+| `#5ffbf1` | `#2a8a82` |
+| `#d4a574` | `#8a6538` |

@@ -1,0 +1,95 @@
+---
+title: Logo System
+description: The Spectral Flow mark and its variants
+---
+
+import LogoShowcase from '../../../components/LogoShowcase.astro';
+
+The s3 labs logo, known as the **Spectral Flow** mark, synthesizes geometric structure with organic growth. Three flowing bars represent dispersion, flow, and arrival — motion captured in stillness.
+
+## Logo Variants
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 32px 0;">
+  <LogoShowcase variant="primary" background="dark" title="Primary Mark — Dark" description="Tri-color on void background" />
+  <LogoShowcase variant="mono" background="dark" title="Bio-Green Mono" description="Single gradient for avatars & icons" />
+  <LogoShowcase variant="light" background="light" title="Light Mode" description="Inverted for light backgrounds" />
+  <LogoShowcase variant="primary" background="gradient" title="On Gradient" description="Primary mark on forest gradient" />
+</div>
+
+## Usage Guidelines
+
+### Clear Space
+
+Maintain a minimum clear space around the logo equal to the height of one bar (approximately 1/4 of the total mark height). This ensures the logo maintains its visual impact.
+
+### Minimum Size
+
+- **Digital**: 32px minimum height
+- **Print**: 12mm minimum height
+
+### Do's
+
+- Use the tri-color version as the primary mark
+- Use mono-green for constrained spaces (avatars, favicons)
+- Use the light variant on cream/white backgrounds
+
+### Don'ts
+
+- Don't rotate the logo
+- Don't change the gradient colors
+- Don't add effects (drop shadows, glows) to the mark itself
+- Don't stretch or distort proportions
+
+## Color Breakdown
+
+| Bar | Gradient | Hex Value |
+|-----|----------|-----------|
+| Top | Bio-Green | `#3d4a35` → `#7ed957` |
+| Middle | Glow Cyan | `#2d3628` → `#5ffbf1` |
+| Bottom | Bio-Gold | `#4a5942` → `#d4a574` |
+
+## Horizontal Lockup
+
+For headers and navigation, use the horizontal lockup with the mark and wordmark:
+
+```
+[Mark] s3·labs
+```
+
+The wordmark uses:
+- **s3**: Outfit 800, Bio-Green (#7ed957)
+- **·**: Moss dot separator (#4a5942)
+- **labs**: Outfit 300, Cream (#f5f1e8)
+
+## SVG Code
+
+```svg
+<svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="s3-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s3-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="s3-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <path d="M 12 16 Q 14 13, 20 14 Q 40 12, 70 13 Q 90 12, 100 16
+           Q 108 19, 108 24 Q 108 29, 100 32 Q 90 35, 70 34
+           Q 40 36, 20 34 Q 14 33, 12 29 Q 10 26, 10 23
+           Q 10 19, 12 16 Z" fill="url(#s3-green)"/>
+  <path d="M 28 34 Q 32 31, 40 32 Q 60 30, 80 31 Q 95 30, 102 34
+           Q 108 37, 108 42 Q 108 47, 102 50 Q 95 53, 80 52
+           Q 60 54, 40 52 Q 32 53, 28 49 Q 24 46, 24 42
+           Q 24 38, 28 34 Z" fill="url(#s3-cyan)"/>
+  <path d="M 12 52 Q 14 49, 20 50 Q 40 48, 70 49 Q 90 48, 100 52
+           Q 108 55, 108 60 Q 108 65, 100 68 Q 90 71, 70 70
+           Q 40 72, 20 70 Q 14 69, 12 65 Q 10 62, 10 59
+           Q 10 55, 12 52 Z" fill="url(#s3-gold)"/>
+</svg>
+```
