@@ -1,0 +1,185 @@
+---
+title: Buttons
+description: Button components with bio-luminescent hover effects
+---
+
+import ButtonPreview from '../../../components/ButtonPreview.astro';
+import ComponentDemo from '../../../components/ComponentDemo.astro';
+
+Buttons are the primary interactive elements in the s3 labs design system. They feature bio-luminescent glow effects on hover.
+
+## Button Variants
+
+<ComponentDemo title="Primary Variants">
+  <ButtonPreview variant="primary">Primary</ButtonPreview>
+  <ButtonPreview variant="secondary">Secondary</ButtonPreview>
+  <ButtonPreview variant="ghost">Ghost</ButtonPreview>
+</ComponentDemo>
+
+### Primary
+
+The primary button is used for main actions. It uses the Bio-Green accent color with a glow effect on hover.
+
+```css
+.btn-primary {
+  background: var(--s3-bio-green);
+  color: var(--s3-void);
+}
+
+.btn-primary:hover {
+  background: var(--s3-bio-green-bright);
+  box-shadow: var(--s3-glow-green);
+}
+```
+
+### Secondary
+
+Secondary buttons have a transparent background with a Bio-Green border. Use for secondary actions.
+
+```css
+.btn-secondary {
+  background: transparent;
+  color: var(--s3-bio-green);
+  border: 1px solid var(--s3-bio-green);
+}
+
+.btn-secondary:hover {
+  background: rgba(126, 217, 87, 0.1);
+}
+```
+
+### Ghost
+
+Ghost buttons have a subtle background tint. Use for tertiary actions or in dense UI areas.
+
+```css
+.btn-ghost {
+  background: rgba(126, 217, 87, 0.1);
+  color: var(--s3-bio-green);
+}
+
+.btn-ghost:hover {
+  background: rgba(126, 217, 87, 0.2);
+}
+```
+
+## Color Variants
+
+<ComponentDemo title="Accent Colors">
+  <ButtonPreview variant="primary">Green</ButtonPreview>
+  <ButtonPreview variant="cyan">Cyan</ButtonPreview>
+  <ButtonPreview variant="gold">Gold</ButtonPreview>
+</ComponentDemo>
+
+Use cyan buttons for informational or navigational actions. Gold buttons work well for warnings or premium features.
+
+## Size Variants
+
+<ComponentDemo title="Button Sizes">
+  <ButtonPreview variant="primary" size="sm">Small</ButtonPreview>
+  <ButtonPreview variant="primary" size="md">Medium</ButtonPreview>
+  <ButtonPreview variant="primary" size="lg">Large</ButtonPreview>
+</ComponentDemo>
+
+| Size | Padding | Font Size | Border Radius |
+|------|---------|-----------|---------------|
+| Small | 8px 16px | 12px | 12px |
+| Medium | 12px 24px | 14px | 12px |
+| Large | 16px 48px | 16px | 20px |
+
+## Full CSS Implementation
+
+```css
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s3-space-2);
+  font-family: var(--s3-font-body);
+  font-weight: 600;
+  border-radius: var(--s3-radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+/* Size: Medium (default) */
+.btn {
+  padding: var(--s3-space-3) var(--s3-space-5);
+  font-size: 14px;
+}
+
+/* Size: Small */
+.btn-sm {
+  padding: var(--s3-space-2) var(--s3-space-4);
+  font-size: 12px;
+}
+
+/* Size: Large */
+.btn-lg {
+  padding: var(--s3-space-4) var(--s3-space-7);
+  font-size: 16px;
+  border-radius: var(--s3-radius-lg);
+}
+
+/* Variant: Primary */
+.btn-primary {
+  background: var(--s3-bio-green);
+  color: var(--s3-void);
+}
+
+.btn-primary:hover {
+  background: var(--s3-bio-green-bright);
+  box-shadow: var(--s3-glow-green);
+}
+
+/* Variant: Secondary */
+.btn-secondary {
+  background: transparent;
+  color: var(--s3-bio-green);
+  border: 1px solid var(--s3-bio-green);
+}
+
+.btn-secondary:hover {
+  background: rgba(126, 217, 87, 0.1);
+}
+
+/* Variant: Ghost */
+.btn-ghost {
+  background: rgba(126, 217, 87, 0.1);
+  color: var(--s3-bio-green);
+}
+
+.btn-ghost:hover {
+  background: rgba(126, 217, 87, 0.2);
+}
+
+/* Variant: Cyan */
+.btn-cyan {
+  background: var(--s3-glow-cyan);
+  color: var(--s3-void);
+}
+
+.btn-cyan:hover {
+  background: var(--s3-glow-cyan-bright);
+  box-shadow: var(--s3-glow-cyan);
+}
+
+/* Variant: Gold */
+.btn-gold {
+  background: var(--s3-bio-gold);
+  color: var(--s3-void);
+}
+
+.btn-gold:hover {
+  background: var(--s3-bio-gold-bright);
+  box-shadow: var(--s3-glow-gold);
+}
+```
+
+## Accessibility
+
+- Buttons maintain a minimum contrast ratio of 4.5:1 for text
+- Focus states use a 2px Bio-Green outline with 2px offset
+- Disabled buttons reduce opacity to 0.5 and remove cursor interaction

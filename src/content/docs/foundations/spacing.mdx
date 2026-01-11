@@ -1,0 +1,122 @@
+---
+title: Spacing
+description: A consistent 4px base unit system for layout and component spacing
+---
+
+import SpacingScale from '../../../components/SpacingScale.astro';
+
+The s3 labs spacing system uses a 4px base unit. All spacing values are multiples of this base unit, ensuring visual consistency across the interface.
+
+## Spacing Scale
+
+<SpacingScale />
+
+## Token Reference
+
+| Token | Value | Common Use |
+|-------|-------|------------|
+| `--s3-space-1` | 4px | Icon gaps, tight padding |
+| `--s3-space-2` | 8px | Small gaps, badge padding |
+| `--s3-space-3` | 12px | Input padding, small margins |
+| `--s3-space-4` | 16px | Default gap, card padding |
+| `--s3-space-5` | 24px | Section spacing, card padding |
+| `--s3-space-6` | 32px | Component margins |
+| `--s3-space-7` | 48px | Large section spacing |
+| `--s3-space-8` | 64px | Page sections |
+| `--s3-space-9` | 96px | Major sections |
+| `--s3-space-10` | 128px | Hero spacing |
+
+## CSS Custom Properties
+
+```css
+:root {
+  --s3-space-1: 4px;
+  --s3-space-2: 8px;
+  --s3-space-3: 12px;
+  --s3-space-4: 16px;
+  --s3-space-5: 24px;
+  --s3-space-6: 32px;
+  --s3-space-7: 48px;
+  --s3-space-8: 64px;
+  --s3-space-9: 96px;
+  --s3-space-10: 128px;
+}
+```
+
+## Usage Guidelines
+
+### Component Internal Spacing
+
+| Component | Padding |
+|-----------|---------|
+| Button (sm) | space-2 space-4 |
+| Button (md) | space-3 space-5 |
+| Button (lg) | space-4 space-7 |
+| Badge | space-1 space-3 |
+| Input | space-3 space-4 |
+| Card | space-5 |
+| Banner | space-6 space-7 |
+
+### Layout Spacing
+
+| Context | Spacing |
+|---------|---------|
+| Grid gap | space-4 or space-5 |
+| Section margin | space-7 or space-8 |
+| Page padding | space-7 (desktop), space-4 (mobile) |
+| Header height | space-8 |
+
+### Margins Between Elements
+
+```css
+/* Tight: related elements */
+.margin-tight { margin-bottom: var(--s3-space-2); }
+
+/* Default: standard elements */
+.margin-default { margin-bottom: var(--s3-space-4); }
+
+/* Relaxed: sections */
+.margin-relaxed { margin-bottom: var(--s3-space-6); }
+
+/* Loose: major sections */
+.margin-loose { margin-bottom: var(--s3-space-8); }
+```
+
+## Border Radius Scale
+
+The border radius system follows similar progressive scaling:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--s3-radius-sm` | 6px | Small elements, badges |
+| `--s3-radius-md` | 12px | Buttons, inputs |
+| `--s3-radius-lg` | 20px | Cards |
+| `--s3-radius-xl` | 28px | Panels, banners |
+| `--s3-radius-2xl` | 40px | Large containers |
+| `--s3-radius-full` | 9999px | Pills, avatars |
+
+```css
+:root {
+  --s3-radius-sm: 6px;
+  --s3-radius-md: 12px;
+  --s3-radius-lg: 20px;
+  --s3-radius-xl: 28px;
+  --s3-radius-2xl: 40px;
+  --s3-radius-full: 9999px;
+}
+```
+
+## Responsive Considerations
+
+On smaller screens, reduce spacing proportionally:
+
+```css
+@media (max-width: 768px) {
+  :root {
+    --s3-space-7: 32px;
+    --s3-space-8: 48px;
+    --s3-space-9: 64px;
+    --s3-space-10: 96px;
+  }
+}
+```

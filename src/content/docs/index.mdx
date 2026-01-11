@@ -1,40 +1,54 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+title: s3 labs Design System
+description: Solarpunk Synthesis - where deep forests meet bio-luminescent technology
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: Solarpunk Synthesis — where deep forests meet bio-luminescent technology
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/s3-logo.svg
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Get Started
+      link: /brand/logo/
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: View Components
+      link: /components/buttons/
       icon: external
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## Explore the System
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+  <Card title="Brand Identity" icon="star">
+    Logo system, color palette, and typography that define the s3 labs visual language.
+  </Card>
+  <Card title="Components" icon="puzzle">
+    Buttons, badges, inputs, cards, and banners with bio-luminescent hover effects.
+  </Card>
+  <Card title="Foundations" icon="setting">
+    Icons, spacing scale, and theme specifications for dark and light modes.
+  </Card>
+  <Card title="Resources" icon="document">
+    Design tokens, CSS variables, and downloadable assets for implementation.
+  </Card>
 </CardGrid>
+
+## Design Philosophy
+
+The s3 labs design system embodies **Solarpunk Synthesis** — a vision where technology grows from natural systems rather than opposing them. Our visual language draws from:
+
+- **Deep Forest Foundations** — Dark, organic backgrounds that feel alive
+- **Bio-Luminescent Accents** — Green, cyan, and gold that glow with purpose
+- **Spectral Flow** — Motion captured in stillness, velocity encoded in gradient
+
+## Quick Reference
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `--s3-bio-green` | #7ED957 | Primary accent, CTAs |
+| `--s3-glow-cyan` | #5FFBF1 | Info, links, active states |
+| `--s3-bio-gold` | #D4A574 | Warmth, warnings |
+| `--s3-void` | #0D100B | Primary background |
+| `--s3-cream` | #F5F1E8 | Primary text |

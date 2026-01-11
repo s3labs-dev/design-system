@@ -1,0 +1,60 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="component-demo">
+  {title && (
+    <div class="demo-header">
+      <h3 class="demo-title">{title}</h3>
+      {description && <p class="demo-desc">{description}</p>}
+    </div>
+  )}
+  <div class="demo-preview">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .component-demo {
+    background: var(--s3-forest-base, #242b1f);
+    border-radius: var(--s3-radius-xl, 28px);
+    border: 1px solid rgba(126, 217, 87, 0.08);
+    overflow: hidden;
+    margin: var(--s3-space-5, 24px) 0;
+  }
+
+  .demo-header {
+    padding: var(--s3-space-4, 16px) var(--s3-space-5, 24px);
+    border-bottom: 1px solid rgba(126, 217, 87, 0.08);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .demo-title {
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--s3-moss, #4a5942);
+    margin: 0;
+  }
+
+  .demo-desc {
+    font-size: 13px;
+    color: var(--s3-moss-bright, #6a7858);
+    margin: var(--s3-space-2, 8px) 0 0 0;
+  }
+
+  .demo-preview {
+    padding: var(--s3-space-6, 32px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s3-space-4, 16px);
+    align-items: center;
+  }
+</style>

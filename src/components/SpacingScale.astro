@@ -1,0 +1,71 @@
+---
+interface SpacingItem {
+  name: string;
+  value: string;
+  pixels: number;
+}
+
+const spacingScale: SpacingItem[] = [
+  { name: 'space-1', value: '4px', pixels: 4 },
+  { name: 'space-2', value: '8px', pixels: 8 },
+  { name: 'space-3', value: '12px', pixels: 12 },
+  { name: 'space-4', value: '16px', pixels: 16 },
+  { name: 'space-5', value: '24px', pixels: 24 },
+  { name: 'space-6', value: '32px', pixels: 32 },
+  { name: 'space-7', value: '48px', pixels: 48 },
+  { name: 'space-8', value: '64px', pixels: 64 },
+  { name: 'space-9', value: '96px', pixels: 96 },
+  { name: 'space-10', value: '128px', pixels: 128 },
+];
+---
+
+<div class="spacing-grid">
+  {spacingScale.map((item) => (
+    <div class="spacing-item">
+      <div
+        class="spacing-visual"
+        style={`width: ${Math.min(item.pixels, 128)}px; height: 24px;`}
+      ></div>
+      <span class="spacing-label">{item.value}</span>
+      <span class="spacing-name">--s3-{item.name}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .spacing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--s3-space-4, 16px);
+  }
+
+  .spacing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s3-space-3, 12px);
+    padding: var(--s3-space-4, 16px);
+    background: var(--s3-forest-base, #242b1f);
+    border-radius: var(--s3-radius-lg, 20px);
+    border: 1px solid rgba(126, 217, 87, 0.08);
+  }
+
+  .spacing-visual {
+    background: linear-gradient(135deg, var(--s3-bio-green, #7ed957), var(--s3-glow-cyan, #5ffbf1));
+    border-radius: var(--s3-radius-sm, 6px);
+    flex-shrink: 0;
+  }
+
+  .spacing-label {
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--s3-cream, #f5f1e8);
+  }
+
+  .spacing-name {
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 10px;
+    color: var(--s3-moss, #4a5942);
+  }
+</style>

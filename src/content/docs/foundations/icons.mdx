@@ -1,0 +1,121 @@
+---
+title: Icons
+description: Consistent 24px icons with 2px stroke weight
+---
+
+import IconGrid from '../../../components/IconGrid.astro';
+
+The s3 labs icon system uses consistent 24px icons with a 2px stroke weight. Icons are rendered in accent colors to match the bio-luminescent aesthetic.
+
+## Icon Grid
+
+<IconGrid color="mixed" />
+
+## Icon Specifications
+
+| Property | Value |
+|----------|-------|
+| Size | 24px x 24px |
+| Stroke Width | 2px |
+| Stroke Linecap | Round |
+| Stroke Linejoin | Round |
+| Fill | None |
+
+## Color Usage
+
+Icons can be rendered in any accent color:
+
+<div style="display: flex; gap: 32px; margin: 24px 0;">
+  <IconGrid color="green" />
+</div>
+
+<div style="display: flex; gap: 32px; margin: 24px 0;">
+  <IconGrid color="cyan" />
+</div>
+
+<div style="display: flex; gap: 32px; margin: 24px 0;">
+  <IconGrid color="gold" />
+</div>
+
+## SVG Template
+
+```svg
+<svg
+  viewBox="0 0 24 24"
+  width="24"
+  height="24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <!-- Icon paths here -->
+</svg>
+```
+
+## Icon Examples
+
+### Layers
+
+```svg
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+  <path d="M2 17l10 5 10-5"/>
+  <path d="M2 12l10 5 10-5"/>
+</svg>
+```
+
+### Check Circle
+
+```svg
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+  <polyline points="22 4 12 14.01 9 11.01"/>
+</svg>
+```
+
+### Settings
+
+```svg
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <circle cx="12" cy="12" r="3"/>
+  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+</svg>
+```
+
+## CSS Implementation
+
+```css
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Color variants */
+.icon-green { color: var(--s3-bio-green); }
+.icon-cyan { color: var(--s3-glow-cyan); }
+.icon-gold { color: var(--s3-bio-gold); }
+.icon-muted { color: var(--s3-moss); }
+
+/* Size variants */
+.icon-sm { width: 16px; height: 16px; }
+.icon-lg { width: 32px; height: 32px; }
+```
+
+## Usage Guidelines
+
+- Use icons to supplement text, not replace it
+- Maintain consistent sizing within a context
+- Apply accent colors purposefully (green for actions, cyan for info, gold for warnings)
+- Icons in buttons should be 16-20px
+- Standalone icons should be 24px
+
+## Icon Sources
+
+The s3 labs icons are based on [Lucide](https://lucide.dev/), an open-source icon library. Custom icons follow the same 24px/2px specifications.

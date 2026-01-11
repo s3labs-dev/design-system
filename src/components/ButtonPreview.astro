@@ -1,0 +1,99 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'cyan' | 'gold';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { variant = 'primary', size = 'md' } = Astro.props;
+---
+
+<button class={`s3-btn s3-btn-${variant} s3-btn-${size}`}>
+  <slot />
+</button>
+
+<style>
+  .s3-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s3-space-2, 8px);
+    font-family: var(--s3-font-body, 'Outfit', sans-serif);
+    font-weight: 600;
+    border-radius: var(--s3-radius-md, 12px);
+    border: none;
+    cursor: pointer;
+    transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+  }
+
+  /* Sizes */
+  .s3-btn-sm {
+    padding: var(--s3-space-2, 8px) var(--s3-space-4, 16px);
+    font-size: 12px;
+  }
+
+  .s3-btn-md {
+    padding: var(--s3-space-3, 12px) var(--s3-space-5, 24px);
+    font-size: 14px;
+  }
+
+  .s3-btn-lg {
+    padding: var(--s3-space-4, 16px) var(--s3-space-7, 48px);
+    font-size: 16px;
+    border-radius: var(--s3-radius-lg, 20px);
+  }
+
+  /* Primary */
+  .s3-btn-primary {
+    background: var(--s3-bio-green, #7ed957);
+    color: var(--s3-void, #0d100b);
+  }
+
+  .s3-btn-primary:hover {
+    background: var(--s3-bio-green-bright, #8fe668);
+    box-shadow: var(--s3-glow-green, 0 0 40px rgba(126, 217, 87, 0.15));
+  }
+
+  /* Secondary */
+  .s3-btn-secondary {
+    background: transparent;
+    color: var(--s3-bio-green, #7ed957);
+    border: 1px solid var(--s3-bio-green, #7ed957);
+  }
+
+  .s3-btn-secondary:hover {
+    background: rgba(126, 217, 87, 0.1);
+  }
+
+  /* Ghost */
+  .s3-btn-ghost {
+    background: rgba(126, 217, 87, 0.1);
+    color: var(--s3-bio-green, #7ed957);
+  }
+
+  .s3-btn-ghost:hover {
+    background: rgba(126, 217, 87, 0.2);
+  }
+
+  /* Cyan */
+  .s3-btn-cyan {
+    background: var(--s3-glow-cyan, #5ffbf1);
+    color: var(--s3-void, #0d100b);
+  }
+
+  .s3-btn-cyan:hover {
+    background: var(--s3-glow-cyan-bright, #7ffff8);
+    box-shadow: var(--s3-glow-cyan, 0 0 40px rgba(95, 251, 241, 0.15));
+  }
+
+  /* Gold */
+  .s3-btn-gold {
+    background: var(--s3-bio-gold, #d4a574);
+    color: var(--s3-void, #0d100b);
+  }
+
+  .s3-btn-gold:hover {
+    background: var(--s3-bio-gold-bright, #e6bc8e);
+    box-shadow: var(--s3-glow-gold, 0 0 40px rgba(212, 165, 116, 0.15));
+  }
+</style>

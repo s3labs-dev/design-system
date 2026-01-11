@@ -1,0 +1,190 @@
+---
+title: Banners
+description: Full-width promotional and informational banner patterns
+---
+
+import ComponentDemo from '../../../components/ComponentDemo.astro';
+import ButtonPreview from '../../../components/ButtonPreview.astro';
+
+Banners are full-width components used for announcements, promotions, or important information.
+
+## Banner Variants
+
+<ComponentDemo title="Primary Banner">
+  <div class="s3-banner s3-banner-primary">
+    <div class="banner-content">
+      <h3>Welcome to Spectral Flow</h3>
+      <p>The design system where technology grows from natural systems.</p>
+    </div>
+    <ButtonPreview variant="primary">Get Started</ButtonPreview>
+  </div>
+</ComponentDemo>
+
+<ComponentDemo title="Gradient Banner">
+  <div class="s3-banner s3-banner-gradient">
+    <div class="banner-content">
+      <h3>New Components Available</h3>
+      <p>Check out the latest additions to the bio-luminescent UI library.</p>
+    </div>
+    <ButtonPreview variant="secondary">View Updates</ButtonPreview>
+  </div>
+</ComponentDemo>
+
+<style>{`
+  .s3-banner {
+    padding: 32px 48px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .s3-banner-primary {
+    background: linear-gradient(135deg, var(--s3-forest-mid, #2d3628) 0%, var(--s3-moss-dark, #3d4a35) 100%);
+    border: 1px solid rgba(126, 217, 87, 0.15);
+  }
+  .s3-banner-gradient {
+    background: linear-gradient(135deg, rgba(126, 217, 87, 0.15) 0%, rgba(95, 251, 241, 0.15) 50%, rgba(212, 165, 116, 0.15) 100%);
+    border: 1px solid rgba(126, 217, 87, 0.2);
+  }
+  .banner-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--s3-cream, #f5f1e8);
+  }
+  .banner-content p {
+    font-size: 14px;
+    color: var(--s3-moss-bright, #6a7858);
+    margin: 0;
+  }
+`}</style>
+
+## Banner Anatomy
+
+| Element | Style |
+|---------|-------|
+| Padding | 32px 48px |
+| Border Radius | `--s3-radius-xl` (28px) |
+| Layout | Flexbox, space-between |
+| Gap | 32px |
+
+## CSS Implementation
+
+```css
+.banner {
+  padding: var(--s3-space-6) var(--s3-space-7);
+  border-radius: var(--s3-radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3-space-6);
+}
+
+/* Primary - Forest gradient */
+.banner-primary {
+  background: linear-gradient(135deg, var(--s3-forest-mid) 0%, var(--s3-moss-dark) 100%);
+  border: 1px solid rgba(126, 217, 87, 0.15);
+}
+
+/* Gradient - Tri-color */
+.banner-gradient {
+  background: linear-gradient(135deg,
+    rgba(126, 217, 87, 0.15) 0%,
+    rgba(95, 251, 241, 0.15) 50%,
+    rgba(212, 165, 116, 0.15) 100%
+  );
+  border: 1px solid rgba(126, 217, 87, 0.2);
+}
+
+/* Alert - Warning */
+.banner-warning {
+  background: linear-gradient(135deg,
+    rgba(212, 165, 116, 0.15) 0%,
+    rgba(212, 165, 116, 0.1) 100%
+  );
+  border: 1px solid rgba(212, 165, 116, 0.3);
+}
+
+/* Alert - Info */
+.banner-info {
+  background: linear-gradient(135deg,
+    rgba(95, 251, 241, 0.15) 0%,
+    rgba(95, 251, 241, 0.1) 100%
+  );
+  border: 1px solid rgba(95, 251, 241, 0.3);
+}
+
+.banner-content h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: var(--s3-space-2);
+}
+
+.banner-content p {
+  font-size: 14px;
+  color: var(--s3-moss-bright);
+}
+```
+
+## Dismissible Banner
+
+Add a close button for banners that can be dismissed:
+
+```css
+.banner-dismissible {
+  position: relative;
+  padding-right: 64px;
+}
+
+.banner-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  color: var(--s3-moss);
+  cursor: pointer;
+  border-radius: var(--s3-radius-sm);
+  transition: all var(--s3-duration-fast) var(--s3-ease-out);
+}
+
+.banner-close:hover {
+  background: rgba(126, 217, 87, 0.1);
+  color: var(--s3-bio-green);
+}
+```
+
+## Responsive Behavior
+
+On smaller screens, banners stack vertically:
+
+```css
+@media (max-width: 640px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--s3-space-5);
+  }
+
+  .banner-content {
+    order: 1;
+  }
+
+  .banner button {
+    order: 2;
+    width: 100%;
+  }
+}
+```
+
+## Usage Guidelines
+
+- Use banners sparingly to maintain impact
+- Place at the top of pages or sections
+- Keep copy concise and actionable
+- Use appropriate color variants for context (info, warning, promotion)

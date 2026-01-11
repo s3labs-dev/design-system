@@ -1,0 +1,59 @@
+---
+interface Props {
+  variant?: 'green' | 'cyan' | 'gold' | 'neutral';
+  dot?: boolean;
+}
+
+const { variant = 'green', dot = false } = Astro.props;
+---
+
+<span class={`s3-badge s3-badge-${variant}`}>
+  {dot && <span class="badge-dot"></span>}
+  <slot />
+</span>
+
+<style>
+  .s3-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s3-space-2, 8px);
+    padding: var(--s3-space-1, 4px) var(--s3-space-3, 12px);
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: var(--s3-radius-full, 9999px);
+    text-transform: uppercase;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+  }
+
+  .s3-badge-green {
+    background: rgba(126, 217, 87, 0.15);
+    color: var(--s3-bio-green, #7ed957);
+    border: 1px solid rgba(126, 217, 87, 0.3);
+  }
+
+  .s3-badge-cyan {
+    background: rgba(95, 251, 241, 0.15);
+    color: var(--s3-glow-cyan, #5ffbf1);
+    border: 1px solid rgba(95, 251, 241, 0.3);
+  }
+
+  .s3-badge-gold {
+    background: rgba(212, 165, 116, 0.15);
+    color: var(--s3-bio-gold, #d4a574);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+  }
+
+  .s3-badge-neutral {
+    background: var(--s3-forest-mid, #2d3628);
+    color: var(--s3-moss-bright, #6a7858);
+    border: 1px solid var(--s3-moss-dark, #3d4a35);
+  }
+</style>

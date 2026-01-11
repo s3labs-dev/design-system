@@ -1,0 +1,132 @@
+---
+interface Props {
+  name: string;
+  hex: string;
+  variable?: string;
+  usage?: string;
+  glow?: boolean;
+}
+
+const { name, hex, variable, usage, glow = false } = Astro.props;
+---
+
+<div class="color-swatch" data-hex={hex}>
+  <div
+    class="swatch-preview"
+    style={`background: ${hex};${glow ? ` box-shadow: 0 0 20px ${hex}40;` : ''}`}
+  ></div>
+  <div class="swatch-info">
+    <span class="swatch-name">{name}</span>
+    <code class="swatch-hex">{hex}</code>
+    {variable && <code class="swatch-var">{variable}</code>}
+    {usage && <span class="swatch-usage">{usage}</span>}
+  </div>
+  <button class="copy-btn" title="Copy hex value">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .color-swatch {
+    display: flex;
+    align-items: center;
+    gap: var(--s3-space-4, 16px);
+    padding: var(--s3-space-3, 12px);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--s3-radius-md, 12px);
+    transition: background 150ms ease-out;
+    position: relative;
+  }
+
+  .color-swatch:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .swatch-preview {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--s3-radius-md, 12px);
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .swatch-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .swatch-name {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--s3-cream, #f5f1e8);
+  }
+
+  .swatch-hex {
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 12px;
+    color: var(--s3-moss, #4a5942);
+    background: none;
+    padding: 0;
+  }
+
+  .swatch-var {
+    font-family: var(--s3-font-mono, 'JetBrains Mono', monospace);
+    font-size: 11px;
+    color: var(--s3-glow-cyan, #5ffbf1);
+    background: none;
+    padding: 0;
+  }
+
+  .swatch-usage {
+    font-size: 12px;
+    color: var(--s3-moss-dark, #3d4a35);
+  }
+
+  .copy-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--s3-moss, #4a5942);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--s3-radius-sm, 6px);
+    opacity: 0;
+    transition: all 150ms ease-out;
+  }
+
+  .color-swatch:hover .copy-btn {
+    opacity: 1;
+  }
+
+  .copy-btn:hover {
+    color: var(--s3-bio-green, #7ed957);
+    background: rgba(126, 217, 87, 0.1);
+  }
+
+  .copy-btn.copied {
+    color: var(--s3-bio-green, #7ed957);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.color-swatch').forEach((swatch) => {
+    const btn = swatch.querySelector('.copy-btn');
+    const hex = swatch.getAttribute('data-hex');
+
+    btn?.addEventListener('click', async () => {
+      if (hex) {
+        await navigator.clipboard.writeText(hex);
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 1500);
+      }
+    });
+  });
+</script>
