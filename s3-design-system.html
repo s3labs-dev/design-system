@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>s3 labs — Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Palette */
+            --void: #0d100b;
+            --void-elevated: #141912;
+            --void-surface: #1a201a;
+            
+            --forest-deep: #1a1f16;
+            --forest-base: #242b1f;
+            --forest-mid: #2d3628;
+            --forest-light: #3a4532;
+            
+            --moss-dark: #3d4a35;
+            --moss: #4a5942;
+            --moss-light: #5a6848;
+            --moss-bright: #6a7858;
+            
+            --bio-green: #7ed957;
+            --bio-green-dim: #5cb842;
+            --bio-green-bright: #8fe668;
+            
+            --glow-cyan: #5ffbf1;
+            --glow-cyan-dim: #4ad9d0;
+            --glow-cyan-bright: #7ffff8;
+            
+            --bio-gold: #d4a574;
+            --bio-gold-dim: #b8895c;
+            --bio-gold-bright: #e6bc8e;
+            
+            --cream: #f5f1e8;
+            --cream-dim: #e8e4db;
+            --cream-bright: #fdfbf7;
+            
+            --stone: #71717a;
+            --stone-dim: #52525b;
+            --stone-bright: #a1a1aa;
+            
+            /* Semantic Colors */
+            --success: var(--bio-green);
+            --warning: var(--bio-gold);
+            --info: var(--glow-cyan);
+            --error: #ef6b6b;
+            
+            /* Typography */
+            --font-display: 'Outfit', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-accent: 'Fraunces', serif;
+            
+            /* Spacing */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 24px;
+            --space-6: 32px;
+            --space-7: 48px;
+            --space-8: 64px;
+            --space-9: 96px;
+            --space-10: 128px;
+            
+            /* Border Radius */
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-2xl: 40px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+            --shadow-glow-green: 0 0 40px rgba(126, 217, 87, 0.15);
+            --shadow-glow-cyan: 0 0 40px rgba(95, 251, 241, 0.15);
+            --shadow-glow-gold: 0 0 40px rgba(212, 165, 116, 0.15);
+            
+            /* Transitions */
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 300ms;
+            --duration-slow: 500ms;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--cream);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Ambient Background */
+        .ambient-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.08;
+            animation: ambientPulse 12s ease-in-out infinite;
+        }
+        
+        .ambient-orb:nth-child(1) {
+            top: 5%;
+            left: 10%;
+            width: 600px;
+            height: 600px;
+            background: var(--bio-green);
+        }
+        
+        .ambient-orb:nth-child(2) {
+            top: 40%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: var(--glow-cyan);
+            animation-delay: 4s;
+        }
+        
+        .ambient-orb:nth-child(3) {
+            bottom: 10%;
+            left: 30%;
+            width: 450px;
+            height: 450px;
+            background: var(--bio-gold);
+            animation-delay: 8s;
+        }
+        
+        @keyframes ambientPulse {
+            0%, 100% { opacity: 0.06; transform: scale(1); }
+            50% { opacity: 0.12; transform: scale(1.1); }
+        }
+        
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: var(--space-8) var(--space-7);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: var(--space-4) var(--space-7);
+            background: rgba(13, 16, 11, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(126, 217, 87, 0.08);
+        }
+        
+        .nav-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-logo-text span {
+            color: var(--bio-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: var(--space-6);
+            list-style: none;
+        }
+        
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--moss-bright);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color var(--duration-fast) var(--ease-out);
+        }
+        
+        .nav-links a:hover {
+            color: var(--bio-green);
+        }
+        
+        .nav-version {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--moss);
+            background: var(--forest-mid);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            letter-spacing: 0.1em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: var(--space-10) 0 var(--space-9);
+            text-align: center;
+            animation: fadeUp 0.8s var(--ease-out) backwards;
+        }
+        
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background: linear-gradient(135deg, rgba(126, 217, 87, 0.1), rgba(95, 251, 241, 0.1));
+            border: 1px solid rgba(126, 217, 87, 0.2);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-6);
+        }
+        
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--bio-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        .hero-badge-text {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--bio-green);
+            letter-spacing: 0.15em;
+        }
+        
+        .hero-mark {
+            margin-bottom: var(--space-7);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            margin-bottom: var(--space-5);
+        }
+        
+        .hero-title-gradient {
+            background: linear-gradient(135deg, var(--bio-green) 0%, var(--glow-cyan) 50%, var(--bio-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-accent);
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--moss-bright);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: var(--space-9) 0;
+            animation: fadeUp 0.8s var(--ease-out) backwards;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
+        .section:nth-child(5) { animation-delay: 0.4s; }
+        
+        .section-header {
+            margin-bottom: var(--space-7);
+        }
+        
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-3);
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--cream);
+        }
+        
+        .section-desc {
+            font-size: 16px;
+            color: var(--moss-bright);
+            max-width: 600px;
+            margin-top: var(--space-3);
+            line-height: 1.7;
+        }
+        
+        /* Logo System */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-5);
+        }
+        
+        .logo-card {
+            background: var(--forest-base);
+            border: 1px solid rgba(126, 217, 87, 0.08);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+        
+        .logo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(126, 217, 87, 0.2);
+            box-shadow: var(--shadow-glow-green);
+        }
+        
+        .logo-card-display {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .logo-card-display.dark { background: var(--void); }
+        .logo-card-display.light { background: var(--cream); }
+        .logo-card-display.gradient { background: linear-gradient(135deg, var(--forest-mid), var(--moss-dark)); }
+        
+        .logo-card-info {
+            padding: var(--space-5);
+            border-top: 1px solid rgba(126, 217, 87, 0.08);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-card-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: var(--space-1);
+        }
+        
+        .logo-card-desc {
+            font-size: 13px;
+            color: var(--moss);
+        }
+        
+        /* Color Palette */
+        .palette-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-7);
+        }
+        
+        .palette-group {
+            background: var(--forest-base);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            border: 1px solid rgba(126, 217, 87, 0.08);
+        }
+        
+        .palette-group-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-5);
+        }
+        
+        .palette-swatches {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        
+        .palette-swatch {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-3);
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-md);
+            transition: background var(--duration-fast) var(--ease-out);
+        }
+        
+        .palette-swatch:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .swatch-color {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .swatch-info {
+            flex: 1;
+        }
+        
+        .swatch-name {
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        .swatch-hex {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--moss);
+        }
+        
+        .swatch-usage {
+            font-size: 12px;
+            color: var(--moss-dark);
+            margin-top: 2px;
+        }
+        
+        /* Typography */
+        .type-scale {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .type-specimen {
+            padding: var(--space-6);
+            background: var(--forest-base);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(126, 217, 87, 0.08);
+        }
+        
+        .type-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid rgba(126, 217, 87, 0.08);
+        }
+        
+        .type-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--moss);
+        }
+        
+        .type-specs {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--moss-dark);
+        }
+        
+        .type-display-1 {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+        }
+        
+        .type-display-2 {
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        
+        .type-heading-1 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        .type-heading-2 {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+        
+        .type-body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--cream-dim);
+        }
+        
+        .type-mono {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--glow-cyan);
+        }
+        
+        .type-accent {
+            font-family: var(--font-accent);
+            font-size: 20px;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            color: var(--moss-bright);
+        }
+        
+        /* Components */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-5);
+        }
+        
+        .component-card {
+            background: var(--forest-base);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            border: 1px solid rgba(126, 217, 87, 0.08);
+        }
+        
+        .component-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--moss);
+            margin-bottom: var(--space-5);
+        }
+        
+        .component-preview {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-out);
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: var(--bio-green);
+            color: var(--void);
+        }
+        
+        .btn-primary:hover {
+            background: var(--bio-green-bright);
+            box-shadow: var(--shadow-glow-green);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--bio-green);
+            border: 1px solid var(--bio-green);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(126, 217, 87, 0.1);
+        }
+        
+        .btn-ghost {
+            background: rgba(126, 217, 87, 0.1);
+            color: var(--bio-green);
+        }
+        
+        .btn-ghost:hover {
+            background: rgba(126, 217, 87, 0.2);
+        }
+        
+        .btn-cyan {
+            background: var(--glow-cyan);
+            color: var(--void);
+        }
+        
+        .btn-cyan:hover {
+            background: var(--glow-cyan-bright);
+            box-shadow: var(--shadow-glow-cyan);
+        }
+        
+        .btn-gold {
+            background: var(--bio-gold);
+            color: var(--void);
+        }
+        
+        .btn-gold:hover {
+            background: var(--bio-gold-bright);
+            box-shadow: var(--shadow-glow-gold);
+        }
+        
+        .btn-lg {
+            padding: var(--space-4) var(--space-7);
+            font-size: 16px;
+            border-radius: var(--radius-lg);
+        }
+        
+        .btn-sm {
+            padding: var(--space-2) var(--space-4);
+            font-size: 12px;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-1) var(--space-3);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius-full);
+        }
+        
+        .badge-green {
+            background: rgba(126, 217, 87, 0.15);
+            color: var(--bio-green);
+            border: 1px solid rgba(126, 217, 87, 0.3);
+        }
+        
+        .badge-cyan {
+            background: rgba(95, 251, 241, 0.15);
+            color: var(--glow-cyan);
+            border: 1px solid rgba(95, 251, 241, 0.3);
+        }
+        
+        .badge-gold {
+            background: rgba(212, 165, 116, 0.15);
+            color: var(--bio-gold);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+        }
+        
+        .badge-neutral {
+            background: var(--forest-mid);
+            color: var(--moss-bright);
+            border: 1px solid var(--moss-dark);
+        }
+        
+        /* Inputs */
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+        
+        .input-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--cream-dim);
+        }
+        
+        .input {
+            padding: var(--space-3) var(--space-4);
+            font-family: var(--font-body);
+            font-size: 14px;
+            background: var(--void);
+            border: 1px solid var(--moss-dark);
+            border-radius: var(--radius-md);
+            color: var(--cream);
+            transition: all var(--duration-fast) var(--ease-out);
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: var(--bio-green);
+            box-shadow: 0 0 0 3px rgba(126, 217, 87, 0.15);
+        }
+        
+        .input::placeholder {
+            color: var(--moss);
+        }
+        
+        /* Cards */
+        .preview-card {
+            background: var(--void);
+            border: 1px solid rgba(126, 217, 87, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            transition: all var(--duration-normal) var(--ease-out);
+        }
+        
+        .preview-card:hover {
+            border-color: rgba(126, 217, 87, 0.25);
+            box-shadow: var(--shadow-glow-green);
+        }
+        
+        .preview-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+        
+        .preview-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(126, 217, 87, 0.2), rgba(95, 251, 241, 0.2));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-card-title {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .preview-card-desc {
+            font-size: 13px;
+            color: var(--moss);
+            line-height: 1.5;
+        }
+        
+        /* Banners */
+        .banners-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+        
+        .banner {
+            padding: var(--space-6) var(--space-7);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-6);
+        }
+        
+        .banner-primary {
+            background: linear-gradient(135deg, var(--forest-mid) 0%, var(--moss-dark) 100%);
+            border: 1px solid rgba(126, 217, 87, 0.15);
+        }
+        
+        .banner-gradient {
+            background: linear-gradient(135deg, rgba(126, 217, 87, 0.15) 0%, rgba(95, 251, 241, 0.15) 50%, rgba(212, 165, 116, 0.15) 100%);
+            border: 1px solid rgba(126, 217, 87, 0.2);
+        }
+        
+        .banner-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: var(--space-2);
+        }
+        
+        .banner-content p {
+            font-size: 14px;
+            color: var(--moss-bright);
+        }
+        
+        /* Icons Grid */
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: var(--space-4);
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-4);
+            background: var(--forest-base);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(126, 217, 87, 0.08);
+            transition: all var(--duration-fast) var(--ease-out);
+        }
+        
+        .icon-item:hover {
+            border-color: rgba(126, 217, 87, 0.25);
+            background: var(--forest-mid);
+        }
+        
+        .icon-item svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .icon-item span {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--moss);
+            letter-spacing: 0.05em;
+        }
+        
+        /* Spacing Demo */
+        .spacing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: var(--space-4);
+        }
+        
+        .spacing-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .spacing-visual {
+            background: linear-gradient(135deg, var(--bio-green), var(--glow-cyan));
+            border-radius: var(--radius-sm);
+        }
+        
+        .spacing-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--moss);
+        }
+        
+        /* Theme Preview */
+        .theme-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-5);
+        }
+        
+        .theme-card {
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid rgba(126, 217, 87, 0.1);
+        }
+        
+        .theme-card-header {
+            padding: var(--space-4) var(--space-5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .theme-card-header span {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+        
+        .theme-card-preview {
+            padding: var(--space-6);
+        }
+        
+        .theme-dark {
+            background: var(--void);
+        }
+        
+        .theme-dark .theme-card-header {
+            background: var(--forest-base);
+            color: var(--cream);
+        }
+        
+        .theme-light {
+            background: var(--cream);
+        }
+        
+        .theme-light .theme-card-header {
+            background: #e8e4db;
+            color: var(--void);
+        }
+        
+        .theme-light .theme-card-preview {
+            color: var(--void);
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: var(--space-9);
+            padding: var(--space-7) 0;
+            border-top: 1px solid rgba(126, 217, 87, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+        }
+        
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--moss);
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-right {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--moss-dark);
+            letter-spacing: 0.15em;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: var(--space-6) var(--space-4);
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: var(--space-9) 0 var(--space-7);
+            }
+            
+            .theme-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .palette-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-layer">
+        <div class="ambient-orb"></div>
+        <div class="ambient-orb"></div>
+        <div class="ambient-orb"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <svg viewBox="0 0 36 24" width="36" height="24">
+                    <defs>
+                        <linearGradient id="nav-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="nav-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="nav-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 3 4 Q 4 3, 6 3.5 Q 12 3, 22 3.2 Q 28 3, 31 4 Q 33 4.8, 33 6 Q 33 7.2, 31 8 Q 28 8.8, 22 8.5 Q 12 9, 6 8.5 Q 4 8.2, 3 7.2 Q 2 6.5, 2 5.8 Q 2 4.8, 3 4 Z" fill="url(#nav-g)"/>
+                    <path d="M 8 8.5 Q 10 7.8, 12 8 Q 18 7.5, 24 7.8 Q 29 7.5, 31 8.5 Q 33 9.3, 33 10.5 Q 33 11.7, 31 12.5 Q 29 13.3, 24 13 Q 18 13.5, 12 13 Q 10 13.2, 8 12.3 Q 6 11.5, 6 10.5 Q 6 9.5, 8 8.5 Z" fill="url(#nav-c)"/>
+                    <path d="M 3 13 Q 4 12, 6 12.5 Q 12 12, 22 12.2 Q 28 12, 31 13 Q 33 13.8, 33 15 Q 33 16.2, 31 17 Q 28 17.8, 22 17.5 Q 12 18, 6 17.5 Q 4 17.2, 3 16.2 Q 2 15.5, 2 14.8 Q 2 13.8, 3 13 Z" fill="url(#nav-d)"/>
+                </svg>
+                <span class="nav-logo-text"><span>s3</span>·labs</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#logos">Logos</a></li>
+                <li><a href="#colors">Colors</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#components">Components</a></li>
+                <li><a href="#icons">Icons</a></li>
+                <li><a href="#themes">Themes</a></li>
+            </ul>
+            <span class="nav-version">v2.0</span>
+        </div>
+    </nav>
+    
+    <div class="main-container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span class="hero-badge-text">DESIGN SYSTEM</span>
+            </div>
+            
+            <div class="hero-mark">
+                <svg viewBox="0 0 240 160" width="280" height="187">
+                    <defs>
+                        <linearGradient id="hero-green" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#5a6848" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="hero-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+                            <stop offset="60%" stop-color="#45b5ad" stop-opacity="0.7"/>
+                            <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="hero-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+                            <stop offset="50%" stop-color="#9a7d58" stop-opacity="0.6"/>
+                            <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 24 32 Q 28 28, 40 30 Q 80 26, 140 28 Q 180 26, 200 32 Q 216 36, 216 48 Q 216 60, 200 64 Q 180 68, 140 66 Q 80 70, 40 66 Q 28 64, 24 58 Q 20 52, 20 45 Q 20 38, 24 32 Z" fill="url(#hero-green)"/>
+                    <path d="M 56 68 Q 64 64, 80 66 Q 120 62, 160 64 Q 190 62, 204 68 Q 216 74, 216 84 Q 216 94, 204 100 Q 190 104, 160 102 Q 120 106, 80 102 Q 64 104, 56 98 Q 48 92, 48 84 Q 48 76, 56 68 Z" fill="url(#hero-cyan)"/>
+                    <path d="M 24 104 Q 28 100, 40 102 Q 80 98, 140 100 Q 180 98, 200 104 Q 216 108, 216 120 Q 216 132, 200 136 Q 180 140, 140 138 Q 80 142, 40 138 Q 28 136, 24 130 Q 20 124, 20 117 Q 20 110, 24 104 Z" fill="url(#hero-gold)"/>
+                </svg>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="hero-title-gradient">s3 labs</span>
+            </h1>
+            <p class="hero-subtitle">
+                Solarpunk Synthesis — where deep forests meet bio-luminescent technology
+            </p>
+        </section>
+        
+        <!-- Logo System -->
+        <section id="logos" class="section">
+            <div class="section-header">
+                <p class="section-label">01 · Brand Identity</p>
+                <h2 class="section-title">Logo System</h2>
+                <p class="section-desc">The Spectral Flow mark synthesizes geometric structure with organic growth. Three bars representing dispersion, flow, and arrival.</p>
+            </div>
+            
+            <div class="logo-grid">
+                <!-- Primary Mark -->
+                <div class="logo-card">
+                    <div class="logo-card-display dark">
+                        <svg viewBox="0 0 120 80" width="160" height="107">
+                            <defs>
+                                <linearGradient id="logo1-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                                </linearGradient>
+                                <linearGradient id="logo1-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+                                </linearGradient>
+                                <linearGradient id="logo1-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 12 16 Q 14 13, 20 14 Q 40 12, 70 13 Q 90 12, 100 16 Q 108 19, 108 24 Q 108 29, 100 32 Q 90 35, 70 34 Q 40 36, 20 34 Q 14 33, 12 29 Q 10 26, 10 23 Q 10 19, 12 16 Z" fill="url(#logo1-g)"/>
+                            <path d="M 28 34 Q 32 31, 40 32 Q 60 30, 80 31 Q 95 30, 102 34 Q 108 37, 108 42 Q 108 47, 102 50 Q 95 53, 80 52 Q 60 54, 40 52 Q 32 53, 28 49 Q 24 46, 24 42 Q 24 38, 28 34 Z" fill="url(#logo1-c)"/>
+                            <path d="M 12 52 Q 14 49, 20 50 Q 40 48, 70 49 Q 90 48, 100 52 Q 108 55, 108 60 Q 108 65, 100 68 Q 90 71, 70 70 Q 40 72, 20 70 Q 14 69, 12 65 Q 10 62, 10 59 Q 10 55, 12 52 Z" fill="url(#logo1-d)"/>
+                        </svg>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3 class="logo-card-name">Primary Mark — Dark</h3>
+                        <p class="logo-card-desc">Tri-color on void background</p>
+                    </div>
+                </div>
+                
+                <!-- Mono Green -->
+                <div class="logo-card">
+                    <div class="logo-card-display dark">
+                        <svg viewBox="0 0 120 80" width="160" height="107">
+                            <defs>
+                                <linearGradient id="logo2-mono" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 12 16 Q 14 13, 20 14 Q 40 12, 70 13 Q 90 12, 100 16 Q 108 19, 108 24 Q 108 29, 100 32 Q 90 35, 70 34 Q 40 36, 20 34 Q 14 33, 12 29 Q 10 26, 10 23 Q 10 19, 12 16 Z" fill="url(#logo2-mono)"/>
+                            <path d="M 28 34 Q 32 31, 40 32 Q 60 30, 80 31 Q 95 30, 102 34 Q 108 37, 108 42 Q 108 47, 102 50 Q 95 53, 80 52 Q 60 54, 40 52 Q 32 53, 28 49 Q 24 46, 24 42 Q 24 38, 28 34 Z" fill="url(#logo2-mono)"/>
+                            <path d="M 12 52 Q 14 49, 20 50 Q 40 48, 70 49 Q 90 48, 100 52 Q 108 55, 108 60 Q 108 65, 100 68 Q 90 71, 70 70 Q 40 72, 20 70 Q 14 69, 12 65 Q 10 62, 10 59 Q 10 55, 12 52 Z" fill="url(#logo2-mono)"/>
+                        </svg>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3 class="logo-card-name">Bio-Green Mono</h3>
+                        <p class="logo-card-desc">Single gradient, avatars & icons</p>
+                    </div>
+                </div>
+                
+                <!-- Light Mode -->
+                <div class="logo-card">
+                    <div class="logo-card-display light">
+                        <svg viewBox="0 0 120 80" width="160" height="107">
+                            <defs>
+                                <linearGradient id="logo3-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#d4d7cc" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#4a6830" stop-opacity="1"/>
+                                </linearGradient>
+                                <linearGradient id="logo3-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#d4d7cc" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#2a8a82" stop-opacity="1"/>
+                                </linearGradient>
+                                <linearGradient id="logo3-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#d4d7cc" stop-opacity="0"/>
+                                    <stop offset="100%" stop-color="#8a6538" stop-opacity="1"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M 12 16 Q 14 13, 20 14 Q 40 12, 70 13 Q 90 12, 100 16 Q 108 19, 108 24 Q 108 29, 100 32 Q 90 35, 70 34 Q 40 36, 20 34 Q 14 33, 12 29 Q 10 26, 10 23 Q 10 19, 12 16 Z" fill="url(#logo3-g)"/>
+                            <path d="M 28 34 Q 32 31, 40 32 Q 60 30, 80 31 Q 95 30, 102 34 Q 108 37, 108 42 Q 108 47, 102 50 Q 95 53, 80 52 Q 60 54, 40 52 Q 32 53, 28 49 Q 24 46, 24 42 Q 24 38, 28 34 Z" fill="url(#logo3-c)"/>
+                            <path d="M 12 52 Q 14 49, 20 50 Q 40 48, 70 49 Q 90 48, 100 52 Q 108 55, 108 60 Q 108 65, 100 68 Q 90 71, 70 70 Q 40 72, 20 70 Q 14 69, 12 65 Q 10 62, 10 59 Q 10 55, 12 52 Z" fill="url(#logo3-d)"/>
+                        </svg>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3 class="logo-card-name">Light Mode</h3>
+                        <p class="logo-card-desc">Inverted for light backgrounds</p>
+                    </div>
+                </div>
+                
+                <!-- Wordmark Horizontal -->
+                <div class="logo-card">
+                    <div class="logo-card-display gradient">
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <svg viewBox="0 0 60 40" width="48" height="32">
+                                <defs>
+                                    <linearGradient id="logo4-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                                        <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                                    </linearGradient>
+                                    <linearGradient id="logo4-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+                                        <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+                                    </linearGradient>
+                                    <linearGradient id="logo4-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+                                        <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M 6 8 Q 7 6.5, 10 7 Q 20 6, 35 6.5 Q 45 6, 50 8 Q 54 9.5, 54 12 Q 54 14.5, 50 16 Q 45 17.5, 35 17 Q 20 18, 10 17 Q 7 16.5, 6 14.5 Q 5 13, 5 11.5 Q 5 9.5, 6 8 Z" fill="url(#logo4-g)"/>
+                                <path d="M 14 17 Q 16 15.5, 20 16 Q 30 15, 40 15.5 Q 48 15, 51 17 Q 54 18.5, 54 21 Q 54 23.5, 51 25 Q 48 26.5, 40 26 Q 30 27, 20 26 Q 16 26.5, 14 24.5 Q 12 23, 12 21 Q 12 19, 14 17 Z" fill="url(#logo4-c)"/>
+                                <path d="M 6 26 Q 7 24.5, 10 25 Q 20 24, 35 24.5 Q 45 24, 50 26 Q 54 27.5, 54 30 Q 54 32.5, 50 34 Q 45 35.5, 35 35 Q 20 36, 10 35 Q 7 34.5, 6 32.5 Q 5 31, 5 29.5 Q 5 27.5, 6 26 Z" fill="url(#logo4-d)"/>
+                            </svg>
+                            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #7ed957;">s3</span>
+                            <span style="width: 6px; height: 6px; background: #4a5942; border-radius: 50%;"></span>
+                            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #f5f1e8;">labs</span>
+                        </div>
+                    </div>
+                    <div class="logo-card-info">
+                        <h3 class="logo-card-name">Horizontal Lockup</h3>
+                        <p class="logo-card-desc">Mark + wordmark for headers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Color Palette -->
+        <section id="colors" class="section">
+            <div class="section-header">
+                <p class="section-label">02 · Color System</p>
+                <h2 class="section-title">Color Palette</h2>
+                <p class="section-desc">A tri-chromatic system rooted in deep forest foundations with bio-luminescent accents.</p>
+            </div>
+            
+            <div class="palette-section">
+                <!-- Foundation Colors -->
+                <div class="palette-group">
+                    <h3 class="palette-group-title">Foundation</h3>
+                    <div class="palette-swatches">
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--void);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Void</div>
+                                <div class="swatch-hex">#0D100B</div>
+                                <div class="swatch-usage">Primary background</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--forest-base);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Forest Base</div>
+                                <div class="swatch-hex">#242B1F</div>
+                                <div class="swatch-usage">Cards, elevated surfaces</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--moss-dark);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Moss Dark</div>
+                                <div class="swatch-hex">#3D4A35</div>
+                                <div class="swatch-usage">Borders, dividers</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--moss);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Moss</div>
+                                <div class="swatch-hex">#4A5942</div>
+                                <div class="swatch-usage">Secondary text, muted</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accent Colors -->
+                <div class="palette-group">
+                    <h3 class="palette-group-title">Bio-Luminescent Accents</h3>
+                    <div class="palette-swatches">
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--bio-green); box-shadow: 0 0 20px rgba(126, 217, 87, 0.3);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Bio-Green</div>
+                                <div class="swatch-hex">#7ED957</div>
+                                <div class="swatch-usage">Primary accent, CTAs, success</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--glow-cyan); box-shadow: 0 0 20px rgba(95, 251, 241, 0.3);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Glow Cyan</div>
+                                <div class="swatch-hex">#5FFBF1</div>
+                                <div class="swatch-usage">Active states, info, links</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--bio-gold); box-shadow: 0 0 20px rgba(212, 165, 116, 0.3);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Bio-Gold</div>
+                                <div class="swatch-hex">#D4A574</div>
+                                <div class="swatch-usage">Warmth, warnings, highlights</div>
+                            </div>
+                        </div>
+                        <div class="palette-swatch">
+                            <div class="swatch-color" style="background: var(--cream);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Cream</div>
+                                <div class="swatch-hex">#F5F1E8</div>
+                                <div class="swatch-usage">Primary text, light mode bg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Typography -->
+        <section id="typography" class="section">
+            <div class="section-header">
+                <p class="section-label">03 · Typography</p>
+                <h2 class="section-title">Type System</h2>
+                <p class="section-desc">Outfit for display and body, JetBrains Mono for code and labels, Fraunces for editorial accents.</p>
+            </div>
+            
+            <div class="type-scale">
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Display 1</span>
+                        <span class="type-specs">Outfit 800 · 72px · -0.04em</span>
+                    </div>
+                    <p class="type-display-1">Spectral Arrival</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Display 2</span>
+                        <span class="type-specs">Outfit 700 · 48px · -0.03em</span>
+                    </div>
+                    <p class="type-display-2">Technology That Grows</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Heading 1</span>
+                        <span class="type-specs">Outfit 600 · 32px · -0.02em</span>
+                    </div>
+                    <p class="type-heading-1">Deep Forest Foundations</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Heading 2</span>
+                        <span class="type-specs">Outfit 600 · 24px · -0.01em</span>
+                    </div>
+                    <p class="type-heading-2">Bio-Luminescent Interfaces</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Body</span>
+                        <span class="type-specs">Outfit 400 · 16px · 1.7 line-height</span>
+                    </div>
+                    <p class="type-body">Trail fading behind. Solid arrival ahead. Motion captured in stillness, velocity encoded in gradient, dispersion crystallized into form. This is design as kinetic trace.</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Monospace</span>
+                        <span class="type-specs">JetBrains Mono 400 · 14px</span>
+                    </div>
+                    <p class="type-mono">const spectralArrival = { origin: "dispersed", destination: "solid" };</p>
+                </div>
+                
+                <div class="type-specimen">
+                    <div class="type-meta">
+                        <span class="type-label">Accent</span>
+                        <span class="type-specs">Fraunces 400 Italic · 20px</span>
+                    </div>
+                    <p class="type-accent">Where deep forests meet bio-luminescent technology</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Components -->
+        <section id="components" class="section">
+            <div class="section-header">
+                <p class="section-label">04 · Components</p>
+                <h2 class="section-title">UI Patterns</h2>
+                <p class="section-desc">Buttons, badges, inputs, and cards designed for the solarpunk ecosystem.</p>
+            </div>
+            
+            <div class="components-grid">
+                <!-- Buttons -->
+                <div class="component-card">
+                    <h3 class="component-title">Buttons</h3>
+                    <div class="component-preview">
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-secondary">Secondary</button>
+                            <button class="btn btn-ghost">Ghost</button>
+                        </div>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <button class="btn btn-cyan">Cyan</button>
+                            <button class="btn btn-gold">Gold</button>
+                        </div>
+                        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                            <button class="btn btn-primary btn-lg">Large</button>
+                            <button class="btn btn-primary">Default</button>
+                            <button class="btn btn-primary btn-sm">Small</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Badges -->
+                <div class="component-card">
+                    <h3 class="component-title">Badges</h3>
+                    <div class="component-preview">
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <span class="badge badge-green">ACTIVE</span>
+                            <span class="badge badge-cyan">INFO</span>
+                            <span class="badge badge-gold">WARNING</span>
+                            <span class="badge badge-neutral">NEUTRAL</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <span class="badge badge-green"><span style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span> Online</span>
+                            <span class="badge badge-cyan"><span style="width: 6px; height: 6px; background: currentColor; border-radius: 50%;"></span> Processing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inputs -->
+                <div class="component-card">
+                    <h3 class="component-title">Inputs</h3>
+                    <div class="component-preview">
+                        <div class="input-wrapper">
+                            <label class="input-label">Email Address</label>
+                            <input type="email" class="input" placeholder="name@s3labs.co">
+                        </div>
+                        <div class="input-wrapper">
+                            <label class="input-label">Project Name</label>
+                            <input type="text" class="input" placeholder="Enter project name">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cards -->
+                <div class="component-card">
+                    <h3 class="component-title">Cards</h3>
+                    <div class="component-preview">
+                        <div class="preview-card">
+                            <div class="preview-card-header">
+                                <div class="preview-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7ed957" stroke-width="2">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                        <path d="M2 17l10 5 10-5"/>
+                                        <path d="M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <span class="preview-card-title">System Module</span>
+                            </div>
+                            <p class="preview-card-desc">A compact card component for displaying system information and actions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Icons -->
+        <section id="icons" class="section">
+            <div class="section-header">
+                <p class="section-label">05 · Iconography</p>
+                <h2 class="section-title">Icons</h2>
+                <p class="section-desc">Consistent 24px icons with 2px stroke weight. Organic yet precise.</p>
+            </div>
+            
+            <div class="icons-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7ed957" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    <span>layers</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#5ffbf1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                    <span>clock</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#d4a574" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <span>check</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7ed957" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                    <span>external</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#5ffbf1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <span>search</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#d4a574" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l1.912 5.813a1 1 0 0 0 .95.687h6.138l-4.97 3.6a1 1 0 0 0-.364 1.118L17.577 20l-4.97-3.6a1 1 0 0 0-1.176 0l-4.97 3.6 1.912-5.813a1 1 0 0 0-.364-1.118L3 9.5h6.138a1 1 0 0 0 .95-.687L12 3z"/>
+                    </svg>
+                    <span>star</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7ed957" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                    <span>chat</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#5ffbf1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                    </svg>
+                    <span>close</span>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#d4a574" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                    <span>settings</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Banners -->
+        <section class="section">
+            <div class="section-header">
+                <p class="section-label">06 · Banners</p>
+                <h2 class="section-title">Banner Patterns</h2>
+                <p class="section-desc">Full-width promotional and informational banners.</p>
+            </div>
+            
+            <div class="banners-grid">
+                <div class="banner banner-primary">
+                    <div class="banner-content">
+                        <h3>Welcome to Spectral Flow</h3>
+                        <p>The design system where technology grows from natural systems.</p>
+                    </div>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                
+                <div class="banner banner-gradient">
+                    <div class="banner-content">
+                        <h3>New Components Available</h3>
+                        <p>Check out the latest additions to the bio-luminescent UI library.</p>
+                    </div>
+                    <button class="btn btn-secondary">View Updates</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Themes -->
+        <section id="themes" class="section">
+            <div class="section-header">
+                <p class="section-label">07 · Themes</p>
+                <h2 class="section-title">Dark & Light Modes</h2>
+                <p class="section-desc">Full theme support with semantic color mapping.</p>
+            </div>
+            
+            <div class="theme-grid">
+                <div class="theme-card theme-dark">
+                    <div class="theme-card-header">
+                        <span>DARK MODE</span>
+                        <span class="badge badge-green">DEFAULT</span>
+                    </div>
+                    <div class="theme-card-preview">
+                        <p style="font-size: 14px; color: var(--cream-dim); margin-bottom: 16px;">Deep forest void provides maximum contrast for bio-luminescent accents.</p>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="btn btn-primary btn-sm">Primary</button>
+                            <button class="btn btn-secondary btn-sm">Secondary</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="theme-card theme-light">
+                    <div class="theme-card-header">
+                        <span>LIGHT MODE</span>
+                        <span class="badge badge-neutral" style="background: #d4d7cc; border-color: #a1a1aa;">ALT</span>
+                    </div>
+                    <div class="theme-card-preview">
+                        <p style="font-size: 14px; margin-bottom: 16px;">Cream canvas with deepened accent colors for print and high-brightness contexts.</p>
+                        <div style="display: flex; gap: 8px;">
+                            <button style="padding: 8px 16px; font-size: 12px; font-weight: 600; background: #4a6830; color: white; border: none; border-radius: 8px; cursor: pointer;">Primary</button>
+                            <button style="padding: 8px 16px; font-size: 12px; font-weight: 600; background: transparent; color: #4a6830; border: 1px solid #4a6830; border-radius: 8px; cursor: pointer;">Secondary</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Spacing -->
+        <section class="section">
+            <div class="section-header">
+                <p class="section-label">08 · Spacing</p>
+                <h2 class="section-title">Spacing Scale</h2>
+                <p class="section-desc">A consistent 4px base unit system for layout and component spacing.</p>
+            </div>
+            
+            <div class="spacing-grid">
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 4px; height: 24px;"></div>
+                    <span class="spacing-label">4px · space-1</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 8px; height: 24px;"></div>
+                    <span class="spacing-label">8px · space-2</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 12px; height: 24px;"></div>
+                    <span class="spacing-label">12px · space-3</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 16px; height: 24px;"></div>
+                    <span class="spacing-label">16px · space-4</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 24px; height: 24px;"></div>
+                    <span class="spacing-label">24px · space-5</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 32px; height: 24px;"></div>
+                    <span class="spacing-label">32px · space-6</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 48px; height: 24px;"></div>
+                    <span class="spacing-label">48px · space-7</span>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-visual" style="width: 64px; height: 24px;"></div>
+                    <span class="spacing-label">64px · space-8</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-left">
+                <svg viewBox="0 0 36 24" width="36" height="24">
+                    <defs>
+                        <linearGradient id="footer-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#3d4a35" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#7ed957" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="footer-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#2d3628" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#5ffbf1" stop-opacity="1"/>
+                        </linearGradient>
+                        <linearGradient id="footer-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#4a5942" stop-opacity="0"/>
+                            <stop offset="100%" stop-color="#d4a574" stop-opacity="1"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M 3 4 Q 4 3, 6 3.5 Q 12 3, 22 3.2 Q 28 3, 31 4 Q 33 4.8, 33 6 Q 33 7.2, 31 8 Q 28 8.8, 22 8.5 Q 12 9, 6 8.5 Q 4 8.2, 3 7.2 Q 2 6.5, 2 5.8 Q 2 4.8, 3 4 Z" fill="url(#footer-g)"/>
+                    <path d="M 8 8.5 Q 10 7.8, 12 8 Q 18 7.5, 24 7.8 Q 29 7.5, 31 8.5 Q 33 9.3, 33 10.5 Q 33 11.7, 31 12.5 Q 29 13.3, 24 13 Q 18 13.5, 12 13 Q 10 13.2, 8 12.3 Q 6 11.5, 6 10.5 Q 6 9.5, 8 8.5 Z" fill="url(#footer-c)"/>
+                    <path d="M 3 13 Q 4 12, 6 12.5 Q 12 12, 22 12.2 Q 28 12, 31 13 Q 33 13.8, 33 15 Q 33 16.2, 31 17 Q 28 17.8, 22 17.5 Q 12 18, 6 17.5 Q 4 17.2, 3 16.2 Q 2 15.5, 2 14.8 Q 2 13.8, 3 13 Z" fill="url(#footer-d)"/>
+                </svg>
+                <span class="footer-text">s3 labs · Design System v2.0</span>
+            </div>
+            <span class="footer-right">SOLARPUNK SYNTHESIS</span>
+        </footer>
+    </div>
+</body>
+</html>
