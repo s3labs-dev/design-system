@@ -1,0 +1,248 @@
+{
+  "name": "S3 Labs Brand Assets",
+  "version": "1.0.0",
+  "description": "Solarpunk design system brand assets for S3 Labs",
+  "assets": {
+    "logos": {
+      "directory": "logos/",
+      "files": [
+        {
+          "name": "s3-logo-mark.svg",
+          "type": "mark",
+          "description": "Spectral Flow mark only",
+          "dimensions": "120x80"
+        },
+        {
+          "name": "s3-logo-full.svg",
+          "type": "full",
+          "description": "Mark with wordmark (dark mode)",
+          "dimensions": "320x80"
+        },
+        {
+          "name": "s3-logo-full-light.svg",
+          "type": "full",
+          "description": "Mark with wordmark (light mode)",
+          "dimensions": "320x80"
+        },
+        {
+          "name": "s3-logo-wordmark.svg",
+          "type": "wordmark",
+          "description": "Wordmark only",
+          "dimensions": "160x40"
+        },
+        {
+          "name": "s3-logo-mono-green.svg",
+          "type": "mono",
+          "color": "#7ed957",
+          "description": "Monochrome green mark"
+        },
+        {
+          "name": "s3-logo-mono-cyan.svg",
+          "type": "mono",
+          "color": "#5ffbf1",
+          "description": "Monochrome cyan mark"
+        },
+        {
+          "name": "s3-logo-mono-gold.svg",
+          "type": "mono",
+          "color": "#d4a574",
+          "description": "Monochrome gold mark"
+        },
+        {
+          "name": "s3-logo-mono-cream.svg",
+          "type": "mono",
+          "color": "#f5f1e8",
+          "description": "Light mono for dark backgrounds"
+        },
+        {
+          "name": "s3-logo-mono-void.svg",
+          "type": "mono",
+          "color": "#0d100b",
+          "description": "Dark mono for light backgrounds"
+        }
+      ]
+    },
+    "icons": {
+      "directory": "icons/",
+      "files": [
+        {
+          "name": "favicon-16.svg",
+          "type": "favicon",
+          "size": 16,
+          "description": "Small favicon"
+        },
+        {
+          "name": "favicon-32.svg",
+          "type": "favicon",
+          "size": 32,
+          "description": "Standard favicon"
+        },
+        {
+          "name": "favicon-mono.svg",
+          "type": "favicon",
+          "size": 32,
+          "description": "Monochrome favicon"
+        },
+        {
+          "name": "apple-touch-icon.svg",
+          "type": "app-icon",
+          "size": 180,
+          "description": "iOS touch icon"
+        },
+        {
+          "name": "icon-192.svg",
+          "type": "app-icon",
+          "size": 192,
+          "description": "PWA icon standard"
+        },
+        {
+          "name": "icon-512.svg",
+          "type": "app-icon",
+          "size": 512,
+          "description": "PWA icon large"
+        }
+      ]
+    },
+    "avatars": {
+      "directory": "avatars/",
+      "files": [
+        {
+          "name": "avatar-square.svg",
+          "type": "avatar",
+          "shape": "square",
+          "variant": "tri-color",
+          "size": 400
+        },
+        {
+          "name": "avatar-circle.svg",
+          "type": "avatar",
+          "shape": "circle",
+          "variant": "tri-color",
+          "size": 400
+        },
+        {
+          "name": "avatar-square-mono.svg",
+          "type": "avatar",
+          "shape": "square",
+          "variant": "mono-green",
+          "size": 400
+        },
+        {
+          "name": "avatar-circle-mono.svg",
+          "type": "avatar",
+          "shape": "circle",
+          "variant": "mono-green",
+          "size": 400
+        },
+        {
+          "name": "avatar-square-sm.svg",
+          "type": "avatar",
+          "shape": "square",
+          "variant": "tri-color",
+          "size": 64
+        },
+        {
+          "name": "avatar-circle-sm.svg",
+          "type": "avatar",
+          "shape": "circle",
+          "variant": "tri-color",
+          "size": 64
+        }
+      ]
+    },
+    "banners": {
+      "directory": "banners/",
+      "files": [
+        {
+          "name": "og-image.svg",
+          "type": "social",
+          "platform": "open-graph",
+          "dimensions": "1200x630"
+        },
+        {
+          "name": "twitter-header.svg",
+          "type": "social",
+          "platform": "twitter",
+          "dimensions": "1500x500"
+        },
+        {
+          "name": "github-social.svg",
+          "type": "social",
+          "platform": "github",
+          "dimensions": "1280x640"
+        },
+        {
+          "name": "linkedin-banner.svg",
+          "type": "social",
+          "platform": "linkedin",
+          "dimensions": "1584x396"
+        },
+        {
+          "name": "email-signature.svg",
+          "type": "signature",
+          "dimensions": "600x150"
+        }
+      ]
+    },
+    "badges": {
+      "directory": "badges/",
+      "files": [
+        {
+          "name": "badge-green.svg",
+          "type": "badge",
+          "color": "#7ed957"
+        },
+        {
+          "name": "badge-cyan.svg",
+          "type": "badge",
+          "color": "#5ffbf1"
+        },
+        {
+          "name": "badge-gold.svg",
+          "type": "badge",
+          "color": "#d4a574"
+        },
+        {
+          "name": "powered-by.svg",
+          "type": "attribution",
+          "dimensions": "180x40"
+        }
+      ]
+    }
+  },
+  "colors": {
+    "primary": {
+      "bio-green": "#7ed957",
+      "bio-green-dim": "#5cb842",
+      "bio-green-bright": "#8fe668"
+    },
+    "secondary": {
+      "glow-cyan": "#5ffbf1",
+      "glow-cyan-dim": "#4ad9d0",
+      "glow-cyan-bright": "#7ffff8"
+    },
+    "tertiary": {
+      "bio-gold": "#d4a574",
+      "bio-gold-dim": "#b8895c",
+      "bio-gold-bright": "#e6bc8e"
+    },
+    "backgrounds": {
+      "void": "#0d100b",
+      "void-elevated": "#141912",
+      "forest-base": "#242b1f",
+      "cream": "#f5f1e8"
+    },
+    "text": {
+      "cream": "#f5f1e8",
+      "cream-dim": "#e8e4db",
+      "void": "#0d100b",
+      "moss": "#4a5942"
+    }
+  },
+  "fonts": {
+    "display": "Outfit",
+    "body": "Outfit",
+    "mono": "JetBrains Mono",
+    "accent": "Fraunces"
+  }
+}

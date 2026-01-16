@@ -1,0 +1,21 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Small square avatar (64x64) -->
+  <defs>
+    <linearGradient id="sm-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7ed957" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#7ed957"/>
+    </linearGradient>
+    <linearGradient id="sm-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5ffbf1" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#5ffbf1"/>
+    </linearGradient>
+    <linearGradient id="sm-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4a574" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="8" fill="#0d100b"/>
+  <rect x="6" y="16" width="52" height="8" rx="4" fill="url(#sm-green)"/>
+  <rect x="12" y="28" width="46" height="8" rx="4" fill="url(#sm-cyan)"/>
+  <rect x="6" y="40" width="52" height="8" rx="4" fill="url(#sm-gold)"/>
+</svg>

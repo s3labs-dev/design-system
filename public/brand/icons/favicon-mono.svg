@@ -1,0 +1,12 @@
+<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monochrome green favicon for simple contexts -->
+  <defs>
+    <linearGradient id="mono-fav" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7ed957" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#7ed957"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="4" width="28" height="6" rx="3" fill="url(#mono-fav)"/>
+  <rect x="5" y="13" width="25" height="6" rx="3" fill="url(#mono-fav)"/>
+  <rect x="2" y="22" width="28" height="6" rx="3" fill="url(#mono-fav)"/>
+</svg>

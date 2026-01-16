@@ -1,0 +1,20 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simplified mark optimized for 16px -->
+  <defs>
+    <linearGradient id="fav16-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7ed957" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7ed957"/>
+    </linearGradient>
+    <linearGradient id="fav16-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5ffbf1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#5ffbf1"/>
+    </linearGradient>
+    <linearGradient id="fav16-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4a574" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="2" width="14" height="3" rx="1.5" fill="url(#fav16-green)"/>
+  <rect x="3" y="6.5" width="12" height="3" rx="1.5" fill="url(#fav16-cyan)"/>
+  <rect x="1" y="11" width="14" height="3" rx="1.5" fill="url(#fav16-gold)"/>
+</svg>

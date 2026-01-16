@@ -1,0 +1,26 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Small circular avatar (64x64) -->
+  <defs>
+    <linearGradient id="sm-circ-green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7ed957" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#7ed957"/>
+    </linearGradient>
+    <linearGradient id="sm-circ-cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5ffbf1" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#5ffbf1"/>
+    </linearGradient>
+    <linearGradient id="sm-circ-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4a574" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#d4a574"/>
+    </linearGradient>
+    <clipPath id="sm-circle-clip">
+      <circle cx="32" cy="32" r="32"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#sm-circle-clip)">
+    <circle cx="32" cy="32" r="32" fill="#0d100b"/>
+    <rect x="6" y="16" width="52" height="8" rx="4" fill="url(#sm-circ-green)"/>
+    <rect x="12" y="28" width="46" height="8" rx="4" fill="url(#sm-circ-cyan)"/>
+    <rect x="6" y="40" width="52" height="8" rx="4" fill="url(#sm-circ-gold)"/>
+  </g>
+</svg>
