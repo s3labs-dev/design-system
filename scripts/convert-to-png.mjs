@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { readdir, mkdir } from 'fs/promises';
+import { readdir, mkdir, readFile } from 'fs/promises';
 import { join, basename } from 'path';
 import { existsSync } from 'fs';
 
@@ -42,6 +42,15 @@ const baseDimensions = {
 const specificDimensions = {
   's3-logo-full.svg': { width: 320, height: 80 },
   's3-logo-full-light.svg': { width: 320, height: 80 },
+  's3-logo-stacked.svg': { width: 320 },
+  's3-logo-stacked-light.svg': { width: 320 },
+  's3-logo-stacked-mono-cream.svg': { width: 320 },
+  's3-logo-stacked-mono-void.svg': { width: 320 },
+  's3-logo-stacked-mono-green.svg': { width: 320 },
+  's3-logo-stacked-mono-cyan.svg': { width: 320 },
+  's3-logo-stacked-mono-gold.svg': { width: 320 },
+  'icon-stacked-192.svg': { width: 192, height: 192 },
+  'icon-stacked-512.svg': { width: 512, height: 512 },
   's3-logo-wordmark.svg': { width: 160, height: 40 },
   'favicon-16.svg': { width: 16, height: 16 },
   'favicon-32.svg': { width: 32, height: 32 },
@@ -89,8 +98,12 @@ async function processDirectory(dirName) {
     const svgPath = join(dirPath, file);
     const baseName = basename(file, '.svg');
 
-    // Get dimensions
-    const dims = specificDimensions[file] || baseDimensions[dirName] || { width: 100, height: 100 };
+    // Get dimensions; derive height from the SVG's viewBox so aspect is never distorted
+    const dims = { ...(specificDimensions[file] || baseDimensions[dirName] || { width: 100, height: 100 }) };
+    const vb = (await readFile(svgPath, 'utf8')).match(/viewBox="([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)"/);
+    if (vb) {
+      dims.height = Math.round(dims.width * (parseFloat(vb[4]) / parseFloat(vb[3])));
+    }
 
     for (const { suffix, scale } of scales) {
       const width = Math.round(dims.width * scale);

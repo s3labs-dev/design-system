@@ -1,0 +1,72 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Brand Cover",
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 840
+    },
+    {
+      "file": "Logo.dc.html",
+      "title": "Logo & App Icons",
+      "x": 1380,
+      "y": 0,
+      "w": 1240,
+      "h": 1140
+    },
+    {
+      "file": "Color.dc.html",
+      "title": "Color",
+      "x": 0,
+      "y": 1280,
+      "w": 1180,
+      "h": 880
+    },
+    {
+      "file": "Typography.dc.html",
+      "title": "Typography",
+      "x": 1280,
+      "y": 1280,
+      "w": 1180,
+      "h": 940
+    },
+    {
+      "file": "Components.dc.html",
+      "title": "UI Components",
+      "x": 0,
+      "y": 2360,
+      "w": 1240,
+      "h": 900
+    },
+    {
+      "file": "Iconography.dc.html",
+      "title": "Icons & Textures",
+      "x": 1360,
+      "y": 2360,
+      "w": 1240,
+      "h": 560
+    },
+    {
+      "file": "Banner.dc.html",
+      "title": "Application \u00b7 Banner",
+      "x": 0,
+      "y": 3400,
+      "w": 1584,
+      "h": 396
+    }
+  ],
+  "annotations": [
+    {
+      "id": "v2-notes",
+      "x": 1704,
+      "y": 3400,
+      "w": 360,
+      "text": "s3labs design system v2 \u2014 rebuilt from brand-style-guide.png and the sibling brand renders in design-system-v2/.\nLogo, mark, and app-icon tiles are the actual assets (downsampled); mono variants recolor them with CSS filters.\nUI tokens match src/styles/custom.css. Full vector set traced from the renders: public/brand/logos/*.svg (incl. the stacked lockup), icons/favicons, avatars, badges, and banners all rebuilt on the new hex-S mark; PNGs via scripts/convert-to-png.mjs."
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

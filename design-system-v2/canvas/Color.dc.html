@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+  <style>
+    body { margin: 0; font-family: 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif; }
+    a { color: #7ed957; } a:hover { color: #8fe668; }
+  </style>
+</helmet>
+<div style="width: 1180px; height: 880px; box-sizing: border-box; background: #0d100b; color: #f5f1eb; padding: 48px 56px; display: flex; flex-direction: column; gap: 32px">
+
+  <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.3em; color: #7ed957">COLOR PALETTE</div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #0d100b; border-bottom: 1px solid #242b1f"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">VOID</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#0D100B</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #1f241a"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">FOREST</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#1F241A</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #4a5942"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">MOSS</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#4A5942</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #7ed957"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">BIO GREEN</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#7ED957</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #5ffbf1"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">GLOW CYAN</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#5FFBF1</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #d4a574"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">BIO GOLD</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#D4A574</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #f5f1eb"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">CREAM</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#F5F1EB</div></div>
+    </div>
+    <div style="display: flex; flex-direction: column; border: 1px solid #242b1f; border-radius: 10px; overflow: hidden">
+      <div style="height: 84px; background: #71717a"></div>
+      <div style="padding: 12px 14px; display: flex; flex-direction: column; gap: 4px"><div style="font-size: 13px; font-weight: 600; letter-spacing: 0.12em">STONE</div><div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 12px; color: #a1a1aa">#71717A</div></div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.24em; color: #a1a1aa">EXTENDED RAMPS</div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px">
+          <div style="flex-grow: 1; background: #5cb842"></div><div style="flex-grow: 1; background: #7ed957"></div><div style="flex-grow: 1; background: #8fe668"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">bio-green &middot; dim / base / bright</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px">
+          <div style="flex-grow: 1; background: #4ad9d0"></div><div style="flex-grow: 1; background: #5ffbf1"></div><div style="flex-grow: 1; background: #7ffff8"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">glow-cyan &middot; dim / base / bright</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px">
+          <div style="flex-grow: 1; background: #b8895c"></div><div style="flex-grow: 1; background: #d4a574"></div><div style="flex-grow: 1; background: #e6bc8e"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">bio-gold &middot; dim / base / bright</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px; border: 1px solid #242b1f">
+          <div style="flex-grow: 1; background: #0d100b"></div><div style="flex-grow: 1; background: #12160f"></div><div style="flex-grow: 1; background: #1a201a"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">surface &middot; void / elevated / raised</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px">
+          <div style="flex-grow: 1; background: #1a1f16"></div><div style="flex-grow: 1; background: #1f241a"></div><div style="flex-grow: 1; background: #242b1f"></div><div style="flex-grow: 1; background: #2d3628"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">forest &middot; deep / base / mid / light</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; border-radius: 8px; overflow: hidden; height: 44px">
+          <div style="flex-grow: 1; background: #52525b"></div><div style="flex-grow: 1; background: #71717a"></div><div style="flex-grow: 1; background: #a1a1aa"></div><div style="flex-grow: 1; background: #e8e4db"></div><div style="flex-grow: 1; background: #f5f1eb"></div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">text &middot; stone-dim / stone / stone-bright / cream-dim / cream</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.24em; color: #a1a1aa">SEMANTIC</div>
+    <div style="display: flex; gap: 16px; align-items: center">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 8px; background: rgba(126, 217, 87, 0.12); border: 1px solid rgba(126, 217, 87, 0.35)">
+        <div style="width: 8px; height: 8px; border-radius: 9999px; background: #7ed957"></div>
+        <div style="font-size: 13px; font-weight: 500; color: #7ed957">Success</div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">#7ED957</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 8px; background: rgba(95, 251, 241, 0.10); border: 1px solid rgba(95, 251, 241, 0.35)">
+        <div style="width: 8px; height: 8px; border-radius: 9999px; background: #5ffbf1"></div>
+        <div style="font-size: 13px; font-weight: 500; color: #5ffbf1">Info</div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">#5FFBF1</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 8px; background: rgba(212, 165, 116, 0.12); border: 1px solid rgba(212, 165, 116, 0.35)">
+        <div style="width: 8px; height: 8px; border-radius: 9999px; background: #d4a574"></div>
+        <div style="font-size: 13px; font-weight: 500; color: #d4a574">Warning</div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">#D4A574</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 8px; background: rgba(239, 107, 107, 0.12); border: 1px solid rgba(239, 107, 107, 0.35)">
+        <div style="width: 8px; height: 8px; border-radius: 9999px; background: #ef6b6b"></div>
+        <div style="font-size: 13px; font-weight: 500; color: #ef6b6b">Error</div>
+        <div style="font-family: 'JetBrains Mono', Menlo, monospace; font-size: 11px; color: #a1a1aa">#EF6B6B</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

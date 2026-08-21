@@ -21,8 +21,10 @@ brand/
 
 | File | Description | Use Case |
 |------|-------------|----------|
-| `s3-logo-mark.svg` | Spectral Flow mark only | App icons, small spaces |
-| `s3-logo-full.svg` | Mark + wordmark "s3·labs" | Primary brand representation |
+| `s3-logo-mark.svg` | Hex-S mark only (gradient) | App icons, small spaces |
+| `s3-logo-full.svg` | Mark + wordmark "s3labs" (horizontal) | Primary brand representation |
+| `s3-logo-stacked.svg` | Mark with wordmark underneath (vertical) | Cards, splash screens, square spaces |
+| `s3-logo-stacked-light.svg` | Stacked lockup, dark wordmark | Light backgrounds |
 | `s3-logo-wordmark.svg` | Wordmark only | When mark is displayed separately |
 
 ### Mono-Color Variants
@@ -32,8 +34,10 @@ brand/
 | `s3-logo-mono-green.svg` | Bio-Green (#7ed957) | Favicons, monochrome contexts |
 | `s3-logo-mono-cyan.svg` | Glow Cyan (#5ffbf1) | Alternative accent |
 | `s3-logo-mono-gold.svg` | Bio-Gold (#d4a574) | Alternative accent |
-| `s3-logo-mono-cream.svg` | Cream (#f5f1e8) | Dark backgrounds |
+| `s3-logo-mono-cream.svg` | Cream (#f5f1eb) | Dark backgrounds |
 | `s3-logo-mono-void.svg` | Void (#0d100b) | Light backgrounds |
+
+Stacked mono variants use the same palette: `s3-logo-stacked-mono-{cream,void,green,cyan,gold}.svg`.
 
 ### Theme Variants
 
@@ -41,6 +45,8 @@ brand/
 |------|-------------|
 | `s3-logo-full.svg` | Default (dark mode) |
 | `s3-logo-full-light.svg` | Light mode variant |
+| `s3-logo-stacked.svg` | Stacked, default (dark mode) |
+| `s3-logo-stacked-light.svg` | Stacked, light mode variant |
 
 ---
 

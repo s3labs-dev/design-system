@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S3 Labs Email Signature</title>
+  <!--
+    S3 LABS EMAIL SIGNATURE
+    =======================
+
+    SETUP INSTRUCTIONS FOR GMAIL:
+
+    1. HOST YOUR LOGO IMAGE
+       Upload s3-logo-mark.png (from public/brand/logos/png/) to a publicly accessible URL.
+       Replace the image src below with your hosted URL.
+       Recommended hosting: Your website, Google Drive (public), Imgur, or a CDN.
+
+    2. CUSTOMIZE YOUR DETAILS
+       Replace the placeholder text below with your actual information:
+       - Your Name
+       - Your Title
+       - your.email@s3labs.io
+       - +1 (555) 123-4567
+       - s3labs.io
+
+    3. ADD TO GMAIL
+       Option A (Recommended - Copy HTML):
+       a. Open this file in a web browser
+       b. Select all content (Cmd/Ctrl + A) and copy (Cmd/Ctrl + C)
+       c. Go to Gmail Settings > See all settings > General > Signature
+       d. Create new signature, paste (Cmd/Ctrl + V)
+       e. Save Changes
+
+       Option B (HTML source):
+       a. Copy the HTML code from the table below
+       b. Use a Gmail signature extension that supports HTML
+
+    DESIGN SYSTEM COLORS:
+    - Bio-Green (primary): #7ed957
+    - Glow Cyan (links): #5ffbf1
+    - Bio-Gold (accent): #d4a574
+    - Void (dark bg): #0d100b
+    - Cream (text): #f5f1e8
+    - Moss (muted): #6a7858
+
+    FONTS:
+    - Display: Outfit (fallback: Helvetica Neue, Arial, sans-serif)
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 20px; background-color: #f5f5f5;">
+
+<!-- EMAIL SIGNATURE START - Copy from here -->
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.5; color: #333333;">
+  <tr>
+    <td style="padding-right: 20px; vertical-align: top;">
+      <!-- Logo Mark -->
+      <!-- IMPORTANT: Replace this src with your hosted logo URL -->
+      <img
+        src="https://your-domain.com/brand/logos/png/s3-logo-mark.png"
+        alt="S3 Labs"
+        width="60"
+        height="71"
+        style="display: block; border: 0; width: 60px; height: auto;"
+      >
+    </td>
+    <td style="vertical-align: top; border-left: 2px solid #7ed957; padding-left: 16px;">
+      <!-- Name -->
+      <p style="margin: 0 0 2px 0; padding: 0;">
+        <span style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; color: #1a1f16; letter-spacing: -0.01em;">
+          Your Name
+        </span>
+      </p>
+
+      <!-- Title -->
+      <p style="margin: 0 0 10px 0; padding: 0;">
+        <span style="font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 400; color: #6a7858;">
+          Your Title
+        </span>
+      </p>
+
+      <!-- Contact Info -->
+      <p style="margin: 0; padding: 0; font-size: 13px; color: #4a5942;">
+        <a href="mailto:your.email@s3labs.io" style="color: #5cb842; text-decoration: none;">your.email@s3labs.io</a>
+        <span style="color: #d4a574; padding: 0 6px;">|</span>
+        <span style="color: #4a5942;">+1 (555) 123-4567</span>
+      </p>
+
+      <!-- Website -->
+      <p style="margin: 4px 0 0 0; padding: 0; font-size: 13px;">
+        <a href="https://s3labs.io" style="color: #4ad9d0; text-decoration: none; font-weight: 500;">s3labs.io</a>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- EMAIL SIGNATURE END -->
+
+</body>
+</html>
